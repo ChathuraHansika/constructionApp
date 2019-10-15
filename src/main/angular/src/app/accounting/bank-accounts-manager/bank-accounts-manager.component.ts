@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AccoutingService} from "../../core/services/Accounting/accouting.service";
 
 @Component({
   selector: 'app-bank-accounts-manager',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BankAccountsManagerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private accountingService: AccoutingService) {
+  }
+
+  banks:any;
 
   ngOnInit() {
+    this.loadBanks();
+  }
+
+  loadBanks() {
+    this.accountingService.loadBanks().subscribe(data => {
+      this.banks=data;
+      console.log(this.banks);
+    });
   }
 
 }

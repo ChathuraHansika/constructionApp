@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Chathura
  */
 @RestController
-@RequestMapping(value = "/bank")
+@RequestMapping(value = "/accounting")
 public class BankController {
 
     @Autowired
@@ -26,10 +26,10 @@ public class BankController {
         return null;
     }
 
-    @RequestMapping("/loadBank")
-    public void loadBanks() {
+    @RequestMapping("/loadBanks")
+    public Response loadBanks() {
         System.out.println(bankService.loadBanks());
-       // return new Response(bankService.loadBanks(), true);
+        return new Response(bankService.loadBanks(), true);
     }
 
 }

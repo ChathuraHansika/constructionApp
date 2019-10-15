@@ -114,7 +114,10 @@ export class SETTING {
     },
     getPayrollByMonthAndYear: {
       url: SETTING.HTTP_PREFIX + '/api/employee/payrollsByMonthAndYear',
-
+      type: 'GET'
+    },
+    loadBanks: {
+      url: SETTING.HTTP_PREFIX + '/api/accounting/loadBanks',
       type: 'GET'
     }
   }

@@ -16,11 +16,8 @@
               <div class="inline fields">
                 <label style="width: 22%; text-align: right; font-size: 12px"> Bank Name *</label>
                 <div class="twelve wide field">
-                  <select style="height: 13%" class="ui tiny search dropdown">
-                    <option value="">Select Bank Name</option>
-                    <option value="">Site 1</option>
-                    <option value="">Site 2</option>
-                    <option value="">Site 3</option>
+                  <select style="height: 13%"  class="ui tiny search dropdown">
+                    <option  *ngFor="let bank of banks" value="">{{bank.name}}</option>
                   </select>
                 </div>
               </div>
