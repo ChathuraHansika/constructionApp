@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-
   checkLogin(userDetails) {
     const sub: Subject<Boolean> = new Subject();
     const user = {user: userDetails.user, password: userDetails.password, grant_type: 'password'};
