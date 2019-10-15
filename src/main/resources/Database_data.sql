@@ -148,9 +148,8 @@ VALUES
  '2019-06-03 15:26:59', 1, '2019-06-03 15:26:59', TRUE, 1, 1, 1, 'INIT');
 
 INSERT INTO T_BANK (BANK_ID, NAME)
-VALUES (1, 'NSB');
-VALUES (2, 'Peoples');
-VALUES (3, 'BOC');
+VALUES (1, 'NSB'), (2, 'Peoples'),
+(3, 'BOC');
 
 
 
