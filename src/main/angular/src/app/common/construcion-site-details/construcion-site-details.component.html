@@ -1,0 +1,159 @@
+<div class="ui mini form">
+  <div class="two wide fields">
+    <div class="ui column" style="width: 50%;margin-top: 0.8%">
+      <div class="ui raised violet segment" style="height: 100%;">
+        <div class="field">
+          <div class="grouped fields">
+            <div class="ui mini form">
+              <div class="inline fields">
+                <h3 class="ui header">Details</h3>
+                <div class="ui checkbox" style="left: 65%;padding-bottom: 3%">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px"> Project ID *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="Project ID" [(ngModel)]="dto.projectId">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;"> Project Name *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="Project Name" [(ngModel)]="dto.projectName">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;"> Description *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder=" Description" [(ngModel)]="dto.description">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;"> Address Line 1*</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="Address Line 1" [(ngModel)]="dto.projectAddressOne">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;">Address Line 2 *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="Address Line 2" [(ngModel)]="dto.projectAddressTwo">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 32%; text-align: right; font-size: 12px;"> City *</label>
+                <div class="eight wide field">
+                  <input type="text" placeholder=" City" [(ngModel)]="dto.city">
+                </div>
+                <label style="width: 17%; text-align: right; font-size: 12px;"> Country *</label>
+                <div class="six wide field">
+                  <input type="text" placeholder=" Country" [(ngModel)]="dto.country">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;">Project Type *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="Project Type" [(ngModel)]="dto.projectType">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;">Vat Added *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="Vat Added (Yes or No)" [(ngModel)]="dto.vatAdded">
+                </div>
+              </div>
+              <div class="ui divider"></div>
+              <div class="inline fields">
+                <h3 class="ui header">Client Details</h3>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;"> Client Name *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="  Client Name" [(ngModel)]="dto.clientName"
+                  (focusout)="searchClient()">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;"> Address *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="  Address" [(ngModel)]="dto.clientAddress">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;"> Contact No*</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="Mobile" [(ngModel)]="dto.clientTel">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 32%; text-align: right; font-size: 12px;"> City *</label>
+                <div class="eight wide field">
+                  <input type="text" placeholder=" City" [(ngModel)]="dto.clientCity">
+                </div>
+                <label style="width: 17%; text-align: right; font-size: 12px;"> Country *</label>
+                <div class="six wide field">
+                  <input type="text" placeholder=" Country" [(ngModel)]="dto.clientCountry">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;"> Remarks </label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="  Remarks" [(ngModel)]="dto.remark">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui checkbox" style="left: 70%">
+          <div class="ui tiny animated button" (click)="Clear()" tabindex="0">
+            <div class="visible content">Clear</div>
+            <div class="hidden content">
+              <i class="undo icon"></i>
+            </div>
+          </div>
+        </div>
+        <div class="tiny ui green animated button" tabindex="0" (click)="saveSiteDetail()" style="left: 72%">
+          <div class="visible content">Save</div>
+          <div class="hidden content">
+            <i class="save outline icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui column" style="width: 50%;margin-top: 0.8%;">
+      <div class="ui raised violet segment" style="left: 0.5%; height: 100%;">
+        <div class="inline fields">
+          <h3 class="ui header">Existing Sites</h3>
+          <div class="eight wide field">
+            <div class="ui mini input" style="left: 25%;padding-bottom: 3%">
+              <input type="text" [(ngModel)]="search" placeholder="Search....."
+                     (keyup)="searchData()">
+            </div>
+            <div class="ui checkbox" style="left: 40%; margin-bottom: 9px">
+              <div class="ui tiny animated button" tabindex="0" (click)="getSites()">
+                <div class="visible content">View</div>
+                <div class="hidden content">
+                  <i class="right arrow icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <table class="ui raised very compact table" style="width: 100%">
+          <thead>
+          <tr>
+            <th style="text-align: center">ID</th>
+            <th style="text-align: center">Name</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of sites" (click)="setProjectData(data)">
+            <td style="text-align: center;cursor: pointer">{{data.projectId}}</td>
+            <td style="text-align: center;cursor: pointer">{{data.projectName}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

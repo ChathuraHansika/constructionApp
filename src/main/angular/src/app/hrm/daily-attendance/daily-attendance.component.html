@@ -1,0 +1,219 @@
+<h3 class="ui header">Daily Attendance</h3>
+<div class="two column stackable ui grid">
+  <div class="column" style="width: 50%">
+    <div class="ui raised violet segment">
+      <div class="ui tiny form">
+        <select style="width: 70%;left:12%; height: 13%" class="ui tiny search dropdown"
+                (change)="searchById($event.target.value)">
+          <option value="-1">Select Site</option>
+          <option *ngFor="let site of sites" value="{{site.siteId}}">{{site.projectName}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="column" style="width: 50%;height: 12%">
+    <div class="ui raised violet segment">
+      <div class="ui mini form">
+        <div class="inline field" (change)="searchByIdAndDate($event.target.value)">
+          <label style="width: 20%; text-align: right">Date *</label>
+          <input style="width: 70%" value="dateValue" type="date" placeholder="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="column" style="margin-top: 0.5%">
+  <div class="ui raised violet segment">
+    <div class="ui mini form">
+      <div class="inline fields">
+        <div class="eight wide field">
+          <label style="width: 50%;font-size: 15px">Total Present :</label>
+          <input style="text-align: center" [(ngModel)]="totalPresent" type="text" placeholder="0"
+                 disabled="disabled">
+        </div>
+        <div class="eight wide field" style="margin-left: 4%">
+          <label style="width: 50%;font-size: 15px">Total Absent :</label>
+          <input style="text-align: center" [(ngModel)]="totalAbsent" type="text" placeholder="0"
+                 disabled="disabled">
+        </div>
+        <div class="six wide field" style="margin-left: 5%">
+          <label style="width: 50%;font-size: 15px">Site Total :</label>
+          <input style="text-align: center" type="text" [(ngModel)]="siteTotal" placeholder="0"
+                 disabled="disabled">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<table class="ui raised violet segment very compact table" style="margin-top: 0.5%">
+  <thead>
+  <tr>
+    <th style="text-align: center">#</th>
+    <th style="text-align: center">Name</th>
+    <th style="text-align: center">Designation</th>
+    <th style="text-align: center">Attendance</th>
+    <th style="text-align: center">Time In (hh:mm)</th>
+    <th style="text-align: center"></th>
+    <th style="text-align: center">Time Out (hh:mm)</th>
+    <th style="text-align: center">Leave</th>
+    <th style="text-align: center">Extra Hours</th>
+    <th style="text-align: center">No Pay Deduct</th>
+    <th style="text-align: center"></th>
+    <th style="text-align: center">Wage</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let siteattendance of siteAttendance let i = index">
+    <td style="text-align: center">{{i + 1}}</td>
+    <td style="text-align: center">{{siteattendance.employeeName}}</td>
+    <td style="text-align: center">{{siteattendance.employeeJob}}</td>
+    <td style="text-align: center">
+      <div class="ui mini form">
+
+
+        <select style="height: 17%" class="ui tiny search dropdown" [disabled]="siteattendance.disableAttendance"
+                (change)="getAttendanceValue($event.target.value,siteattendance)">
+          <option value="Present">Present</option>
+          <option type value="Absent">Absent</option>
+        </select>
+
+      </div>
+    </td>
+    <td style="text-align: center">
+      <div class="ui mini form">
+        <div class="inline field">
+          <input id="inTime" style="width: 70%" type="text"
+                 (keyup)="getTimeInTypeValue($event.target.value)"
+                 value="{{siteattendance.timeIn}}" pattern="[a-zA-Z ]*" [disabled]="siteattendance.inTimeTxtDisbale"
+                 placeholder="Time (AM/PM)">
+        </div>
+      </div>
+    </td>
+    <td>
+      <input type="button" class="ui mini green button" [disabled]="siteattendance.disable"
+             (click)="saveAttendanceIn(siteattendance)" value="Save" style="width: 100%"/>
+    </td>
+    <td style="text-align: center">
+      <div class="ui mini form">
+        <div class="inline field">
+          <input style="width: 70%" type="text" value="{{siteattendance.timeOut}}"
+                 (focusout)="getTimeOutTypeValue($event.target.value,siteattendance)"
+                 (keyup.enter)="getTimeOutTypeValue($event.target.value,siteattendance)"
+                 placeholder="Time (AM/PM)">
+        </div>
+      </div>
+    </td>
+    <td style="text-align: center; width: 10%;">
+      <div class="ui mini form">
+        <select style="height: 17%" class="ui tiny search dropdown"
+                (change)="getLeaveValue($event.target.value,siteattendance)">
+          <ng-container *ngFor="let leaves of siteattendance.employeeLeaveYear let i=index">
+            <option *ngIf="leaves.leaveTypeId.leaveTypeId!=4" value="{{leaves.leaveTypeId.leaveTypeId}}">{{leaves.type}}
+            </option>
+          </ng-container>
+        </select>
+        <div style="cursor: pointer" data-tooltip="show leaves" data-position="right center"
+             (click)="showLeaveData(siteattendance.employeeLeaveYear,siteattendance.employeeLeaves
+             ,siteattendance.employeeName,siteattendance);absentModal()">
+          <i style="cursor: pointer" class="low vision icon"></i>
+        </div>
+      </div>
+    </td>
+    <td style="text-align: center">
+      <div class="ui mini form">
+        <div class="inline field">
+          <input style="width: 70%" type="text" placeholder="" value="{{siteattendance.extraHours}}"
+                 [disabled]=true>
+        </div>
+      </div>
+    </td>
+    <td style="text-align: center">
+      <div class="ui mini form">
+        <div class="inline field" *ngIf="siteattendance.noPayDeductTxtVisible">
+          <input style="width: 70%" type="text" [disabled]=true placeholder="" autofocus
+                 (change)="calculateWage($event.target.value,siteattendance)"
+                 value="{{siteattendance.noPayDeduct}}">
+        </div>
+      </div>
+    </td>
+    <td style="text-align: center">
+      <input type="button" class="ui mini green button" [disabled]="siteattendance.disableoutbtn"
+             (click)="saveAttendanceOut(siteattendance)" value="Save" style="width: 100%"/>
+    </td>
+    <td style="text-align: center">
+      <div
+        *ngIf="siteattendance.wage>0">
+        {{siteattendance.wage.toFixed(2)}}</div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="ui tiny test modal transition">
+  <div class="header">
+    Name : {{empname}} &nbsp;&nbsp;&nbsp;Job : {{employeeJob}}
+  </div>
+  <div class="content">
+    <div class="ui mini form">
+      <div class="ui grid">
+        <div class="eight wide column">
+          <div><h3 style="color: #0d71bb">Leaves For Year</h3></div>
+          <div class="ui grid">
+            <div class="seven wide column">
+              <div><h4 style="color: #0ea432">Leave Type</h4></div>
+              <div class="angular-with-newlines">
+                <ng-container *ngFor="let leaves of empYearLeave">
+                  <label style="width: 60%;font-size: 15px" *ngIf="leaves.type!='NOPAY'">{{leaves.type}}
+                    <br/></label>
+                </ng-container>
+              </div>
+            </div>
+            <div class="nine wide column">
+              <div class="ui grid">
+                <div class="seven wide column">
+                  <div><h4 style="color: #0ea432">Count</h4></div>
+                  <div class="angular-with-newlines">
+                    <ng-container *ngFor="let leaves of empYearLeave">
+                      <label style="width: 60%;font-size: 15px" *ngIf="leaves.type!='NOPAY'"
+                      >{{leaves.count}} <br/></label>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="eight wide column">
+                  <div class="angular-with-newlines">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="eight wide column">
+          <div><h3 style="color:  #0d71bb">Got Leaves</h3></div>
+          <div class="ui grid">
+            <div class="eight wide column">
+              <div><h4 style="color: #0ea432">Leave Type</h4></div>
+              <div class="angular-with-newlines">
+                <label style="width: 60%;font-size: 15px" *ngFor="let leaves of empLeave">{{leaves.type}}
+                  <br/>
+                </label>
+              </div>
+            </div>
+            <div class="eight wide column">
+              <div><h4 style="color:#0ea432">Count</h4></div>
+              <div class="angular-with-newlines">
+                <label style="width: 60%;font-size: 15px" *ngFor="let leaves of empLeave">{{leaves.count}}
+                  <br/>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui negative button">
+      Cancel
+    </div>
+  </div>
+</div>

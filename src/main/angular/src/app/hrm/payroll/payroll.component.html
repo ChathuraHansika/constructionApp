@@ -1,0 +1,254 @@
+<!--<h3 class="ui header">BankDetail Details</h3>-->
+<div class="ui mini form">
+  <div class="two wide fields">
+    <div class="column" style="width: 50%;margin-top: 0.8%">
+      <div class="ui raised violet segment" style="height: 100%;">
+        <div class="field">
+          <div class="grouped fields">
+            <div class="ui mini form">
+              <div class="inline fields">
+                <h3 class="ui header">Employee details</h3>
+                <div class="eight wide field">
+                  <div class="ui tiny action input" style="left: 25%;padding-bottom: 3%">
+                    <input type="text" placeholder="Search by Name or NIC" [(ngModel)]="searchName"
+                           (keyup.enter)="searchEmployee()">
+                    <button class="circular ui tiny icon black button" (click)="searchEmployee()">
+                      <i class="icon search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px">Employee ID *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="Employee ID" readonly [(ngModel)]="employee.empID">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;"> Title *</label>
+                <div class="twelve wide field">
+                  <div class="twelve wide field">
+                    <input type="text" placeholder="Title" readonly [(ngModel)]="employee.title">
+                  </div>
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;"> Full Name *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder=" Full Name" readonly [(ngModel)]="employee.fullName">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;"> Site *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="Site" readonly [(ngModel)]="employee.siteName">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;"> Designation *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="Designation" readonly [(ngModel)]="employee.designation">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;">Job Type *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder="Job Type" readonly [(ngModel)]="employee.jobType">
+                </div>
+              </div>
+              <!--              <div class="inline fields">-->
+              <!--                <label style="width: 22%; text-align: right; font-size: 12px;">Salary Type *</label>-->
+              <!--                <div class="twelve wide field">-->
+              <!--                  <input type="text" placeholder="Salary type " readonly></div>-->
+              <!--              </div>-->
+              <div class="ui divider"></div>
+              <div class="inline fields">
+                <label style="width: 22%; text-align: right; font-size: 12px;">Date *</label>
+                <div class="twelve wide field">
+                  <input type="date" placeholder="Client Name" [(ngModel)]="employee.date" id="p_date"/>
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 34%; text-align: right; font-size: 12px;"> Month *</label>
+                <div class="six wide field">
+                  <select style="height: 13%" class="ui tiny search dropdown" id="monthDrop"
+                          [disabled]="employee.empID === null || employee.empID === undefined">
+                    <option value="0">Select Month</option>
+                    <option value="1" (click)="setMonth('1')">January</option>
+                    <option value="2" (click)="setMonth('2')">February</option>
+                    <option value="3" (click)="setMonth('3')">March</option>
+                    <option value="4" (click)="setMonth('4')">April</option>
+                    <option value="5" (click)="setMonth('5')">May</option>
+                    <option value="6" (click)="setMonth('6')">June</option>
+                    <option value="7" (click)="setMonth('7')">July</option>
+                    <option value="8" (click)="setMonth('8')">August</option>
+                    <option value="9" (click)="setMonth('9')">September</option>
+                    <option value="10" (click)="setMonth('10')">October</option>
+                    <option value="11" (click)="setMonth('11')">November</option>
+                    <option value="12" (click)="setMonth('12')">December</option>
+                  </select>
+                </div>
+                <label style="width: 13%; text-align: right; font-size: 12px;"> Year *</label>
+                <div class="six wide field">
+                  <select style="height: 13%" class="ui tiny search dropdown" id="yeadDrop"
+                          [disabled]="employee.empID === null || employee.empID === undefined">
+                    <option value="">Select Year</option>
+                    <option value="2019" (click)="setYear('2019')">2019</option>
+                    <option value="2020" (click)="setYear('2020')">2020</option>
+                    <option value="2021" (click)="setYear('2021')">2021</option>
+                    <option value="2022" (click)="setYear('2022')">2022</option>
+                    <option value="2023" (click)="setYear('2023')">2023</option>
+                    <option value="2024" (click)="setYear('2024')">2024</option>
+                    <option value="2025" (click)="setYear('2025')">2025</option>
+                    <option value="2026" (click)="setYear('2026')">2026</option>
+                    <option value="2027" (click)="setYear('2027')">2027</option>
+                    <option value="2028" (click)="setYear('2028')">2028</option>
+                    <option value="2029" (click)="setYear('2029')">2029</option>
+                    <option value="2030" (click)="setYear('2030')">2030</option>
+                    <option value="2031" (click)="setYear('2031')">2031</option>
+                    <option value="2032" (click)="setYear('2032')">2032</option>
+                    <option value="2033" (click)="setYear('2033')">2033</option>
+                    <option value="2034" (click)="setYear('2034')">2034</option>
+                    <option value="2035" (click)="setYear('2035')">2035</option>
+                    <option value="2036" (click)="setYear('2036')">2036</option>
+                    <option value="2037" (click)="setYear('2037')">2037</option>
+                    <option value="2038" (click)="setYear('2038')">2038</option>
+                    <option value="2039" (click)="setYear('2039')">2039</option>
+                    <option value="2040" (click)="setYear('2040')">2040</option>
+                  </select>
+                </div>
+                <input type="checkbox" name="example" [checked]="employee.approval"
+                       (change)="employee.approval = ! employee.approval"
+                       [disabled]="approval || employee.empID === null || employee.empID === undefined">
+                <label style="width: 18%; text-align: right; font-size: 12px;">Approval</label>
+              </div>
+              <div style="text-align: right; width: 100%">
+                <div class="ui mini label teal" *ngIf="approval">
+                  Payment Approved
+                </div>
+              </div>
+              <table class="ui striped table">
+                <thead>
+                <tr>
+                  <th></th>
+                  <th style="text-align: center">Description</th>
+                  <th style="text-align: center">Amount</th>
+                  <th style="text-align: center"></th>
+                </tr>
+                </thead>
+                <tbody *ngIf="sal_details !== undefined && sal_details !== null && sal_details.length>0">
+                <tr *ngFor="let sal of sal_details let i = index"
+                    style="text-transform: capitalize">
+                  <td>
+                    <i class="check green icon" *ngIf="sal.status === 'ACT'"></i>
+                    <i class="close red icon" *ngIf="sal.status === 'INA'"></i>
+                  </td>
+                  <td style="text-align: center">{{sal.desc}}</td>
+                  <td style="text-align: center;">
+                    <input type="text" id="{{'txt_in'+i}}"
+                           value="{{sal.amount}}"
+                           [(ngModel)]="sal.amount"
+                           [readOnly]="sal.editable === false || approval === true"
+                           (ngModelChange)="totalToBePaid()"
+                    />
+                  </td>
+                  <td style="text-align: center">
+                    <!--                    <button class="circular ui icon green button" (click)="setEditable(sal)" [disabled]="!sal.editable">-->
+                    <!--                      <i class="pencil alternate icon" *ngIf="sal.editable"></i>-->
+                    <!--                      <i class="check icon" *ngIf="sal.editable === "></i>-->
+                    <!--                    </button>-->
+                    <button class="circular ui icon button" [disabled]="!sal.editable || approval === true"
+                            (click)="removePayment(sal)" style="color: #CACBCD">
+                      <i class="trash red icon" *ngIf="sal.status === 'ACT'"></i>
+                      <i class="check green icon" *ngIf="sal.status === 'INA'"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr *ngIf="employee.epf>0">
+                  <td><i class="check green icon"></i></td>
+                  <td style="text-align: center">EPF</td>
+                  <td style="text-align: center;"><input value="{{employee.epf  }}" readonly/></td>
+                  <td>
+                    <button class="circular ui icon button" [disabled]="true">
+                      <i class="trash red icon"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr *ngIf="employee.etf>0">
+                  <td><i class="check green icon"></i></td>
+                  <td style="text-align: center">ETF</td>
+                  <td style="text-align: center;"><input value="{{employee.etf}}" readonly/></td>
+                  <td>
+                    <button class="circular ui icon button" [disabled]="true">
+                      <i class="trash red icon"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <!--                NO PAY DEDUCT-->
+                <tr style="background-color: #95a5a6; color: black; font-weight: bold" *ngIf="deduct>0">
+                  <td></td>
+                  <td style="text-align: center">NO PAY DEDUCT</td>
+                  <td style="text-align: center;">{{deduct.toFixed(2)}}
+                  </td>
+                  <td style="text-align: center">
+                  </td>
+                </tr>
+                <!--                TOTAL SALARY-->
+                <tr style="background-color: #95a5a6; color: black; font-weight: bold">
+                  <td></td>
+                  <td style="text-align: center">AMOUNT TO BE PAID</td>
+                  <td style="text-align: center;">{{finalAmount}}
+                  </td>
+                  <td style="text-align: center">
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <h5 *ngIf="sal_details === undefined || sal_details === null || sal_details.length < 1"
+                  style="text-align: center"
+                  class="ui header">{{message}}</h5>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div style="text-align: right">
+          <div class="ui mini label center" *ngIf="approval" style="color: indianred">
+            This payment is already approved!
+          </div>
+          <button class="tiny ui green button" (click)="savePayment()"
+                  [disabled]="approval === true ||employee.empID === null || employee.empID === undefined">
+            Save
+          </button>
+          <button class="tiny ui black button"
+                  [disabled]="approval === false ||employee.empID === null || employee.empID === undefined"
+                  [routerLink]="'/app/paySheet'">
+            Print
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="column" style="width: 50%;margin-top: 0.8%;">
+      <div class="ui raised violet segment" style="left: 0.5%; height: 100%;">
+        <div class="inline fields">
+          <h3 class="ui header">Payroll History</h3>
+        </div>
+        <table class="ui raised very compact table">
+          <thead>
+          <tr>
+            <th style="text-align: center">ID</th>
+            <th style="text-align: center">Name</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let payroll of tableData" style="cursor: pointer" (click)="viewEmployee(payroll)">
+            <td style="text-align: center">{{payroll.year + '-' + payroll.month + '_emp-' + payroll.empID}}</td>
+            <td style="text-align: center">{{payroll.fullName}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

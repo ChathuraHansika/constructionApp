@@ -1,0 +1,274 @@
+<div class="ui modal user">
+  <i class="close icon"></i>
+  <div class="header">
+    Update Profile
+  </div>
+  <div class="image content">
+    <div class="ui medium image">
+      <img class="ui large circular image" [src]="image">
+    </div>
+    <div class="description">
+      <div class="ui header">Update profile for you.</div>
+      <br>
+      <div class="field ui secondary inverted message segment" style="width: 150%">
+        <div class="ui header">Change Password profile for you.</div>
+        <br>
+        <div class="ui mini form">
+          <div class="inline fields">
+            <label style="width: 35%">Current Password *</label>
+            <div class="twelve wide field">
+              <input type="text" placeholder="Current Password">
+            </div>
+          </div>
+          <div class="inline fields">
+            <label style="width: 35%">New Password *</label>
+            <div class="twelve wide field">
+              <input type="text" placeholder="New Password">
+            </div>
+          </div>
+          <div class="inline fields">
+            <label style="width: 35%">Confirm Password *</label>
+            <div class="twelve wide field">
+              <input type="text" placeholder="Confirm Password">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Nope
+    </div>
+    <div class="ui positive right labeled icon button">
+      Update
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+<div class="ui basic modal">
+  <div class="ui icon header">
+    <i class="exclamation triangle icon"></i>
+    Confirm Log out
+  </div>
+  <div class="content">
+    <p style="text-align: center">You will be returned to the login page.</p>
+  </div>
+  <div class="actions" style="text-align: center">
+    <div class="ui red basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <div class="ui green ok inverted button" (click)="logout()">
+      <i class="checkmark icon"></i>
+      Yes
+    </div>
+  </div>
+</div>
+<div class="ui top fixed menu inverted" style="background-color: dimgrey">
+  <div class="left menu">
+    <div class="item">
+      <div class="smail ui icon input">
+        <a class="item" style="font-weight: bold; font-size: small" routerLink="homePage">
+          <i class="university icon"></i>
+          Construction (PVT) Ltd
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="right menu">
+    <div class="item">
+      <div class="smail ui left icon input">
+        <i class="users icon"></i>
+        <input type="text" placeholder="Search...">
+      </div>
+    </div>
+    <a class="smail ui item">
+      <div class="ui animated button" tabindex="0" (click)="openUserModal()">
+        <div class="visible content">User</div>
+        <div class="hidden content">
+          <i class="user icon"></i>
+        </div>
+      </div>
+    </a>
+    <a class="smail ui item">
+      <div class="ui animated button" tabindex="0" (click)="logoutModal()">
+        <div class="visible content">LOGOUT</div>
+        <div class="hidden content">
+          <i class="power off icon"></i>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+<div class="ui bottom attached segment pushable">
+  <div class="ui visible inverted left vertical sidebar menu" style="background-color: dimgrey">
+    <a class="item">
+    </a>
+    <a class="item">
+    </a>
+    <a class="item" routerLink="/app/homePage">
+      <i class="home icon"></i>
+      Home
+    </a>
+    <div class="ui accordion">
+      <div class="title" style="color: white; padding-left: 7%">
+        HR &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="dropdown icon"></i>
+      </div>
+      <div class="content">
+        <div class="ui fitted divider"></div>
+        <a class="item" routerLink="/app/employeeDetails">
+          <i class="child icon"></i>
+          Employee Details
+        </a>
+        <a class="item" routerLink="/app/dailyAttendance">
+          <i class="handshake icon"></i>
+          Daily Attendance
+        </a>
+        <a class="item" routerLink="/app/payroll">
+          <i class="paper plane icon"></i>
+          Payroll
+        </a>
+      </div>
+    </div>
+    <div class="ui fitted divider"></div>
+
+    <div class="ui accordion">
+      <div class="title" style="color: white; padding-left: 7%">
+        Setting &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="dropdown icon"></i>
+      </div>
+      <div class="content">
+        <div class="ui fitted divider"></div>
+        <a class="item" routerLink="/app/construcionSiteDetails">
+          <i class="street view icon"></i>
+          Construction Site Details
+        </a>
+      </div>
+    </div>
+    <div class="ui fitted divider"></div>
+    <div class="ui accordion">
+      <div class="title" style="color: white; padding-left: 7%;height: 25%">
+        Manager & Request pages
+        <i class="dropdown icon"></i>
+      </div>
+      <div class="content">
+        <div class="ui fitted divider"></div>
+        <a class="item" routerLink="/bankAccountsManager">
+          <i class="dollar sign icon"></i>
+          Bank Accounts Manager
+        </a>
+        <a class="item" routerLink="/largeEquipmentManager">
+          <i class="industry icon"></i>
+          Large Equipment Manager
+        </a>
+        <a class="item" routerLink="/purchaseRequestManager">
+          <i class="sitemap icon"></i>
+          purchase Request Manager
+        </a>
+        <a class="item" routerLink="/approvalRequestsManager">
+          <i class="smile icon"></i>
+          Approval Requests Manager
+        </a>
+        <div class="ui fitted divider"></div>
+      </div>
+      <div class="ui fitted divider"></div>
+      <div class="title" style="color: white; padding-left: 7%">
+        Man Power Reports & Weather
+        <i class="dropdown icon"></i>
+      </div>
+      <div class="content">
+        <div class="ui fitted divider"></div>
+        <a class="item" routerLink="/manPowerMachineryReport">
+          <i class="list alternate icon"></i>
+          Man Power Machinery Report
+        </a>
+        <a class="item" routerLink="/dailyProgressReport">
+          <i class="list alternate icon"></i>
+          Daily Progress Report
+        </a>
+        <a class="item" routerLink="/todayReport">
+          <i class="list alternate icon"></i>
+          Daily Report
+        </a>
+        <a class="item" routerLink="/weatherReport">
+          <i class="list alternate icon"></i>
+          Weather Report
+        </a>
+      </div>
+    </div>
+    <div class="ui fitted divider"></div>
+    <!--<a class="item" routerLink="largeEquipmentManager">-->
+    <!--<i class="industry icon"></i>-->
+    <!--Large Equipment Manager-->
+    <!--</a>-->
+    <!--<a class="item" routerLink="bankAccountsManager">-->
+    <!--<i class="dollar sign icon"></i>-->
+    <!--Bank Accounts Manager-->
+    <!--</a>-->
+    <!--<a class="item" routerLink="purchaseRequestManager">-->
+    <!--<i class="sitemap icon"></i>-->
+    <!--purchase Request Manager-->
+    <!--</a>-->
+    <a class="item" routerLink="/dailyMaterial">
+      <i class="server icon"></i>
+      Daily Material Usage
+    </a>
+    <!--<a class="item" routerLink="/dailyAttendance">-->
+    <!--<i class="handshake icon"></i>-->
+    <!--Daily Attendance-->
+    <!--</a>-->
+    <!--<a class="item" routerLink="approvalRequestsManager">-->
+    <!--<i class="smile icon"></i>-->
+    <!--Approval Requests Manager-->
+    <!--</a>-->
+    <a class="item" routerLink="/incomeExpenseReport">
+      <i class="hotjar icon"></i>
+      Income Expense Report
+    </a>
+    <a class="item" routerLink="/expensesManager">
+      <i class="dolly icon"></i>
+      Expenses Manager
+    </a>
+    <a class="item" routerLink="/incomeManager">
+      <i class="balance scale icon"></i>
+      Income Manager
+    </a>
+    <a class="item" routerLink="/supplierPayments">
+      <i class="money bill alternate icon"></i>
+      Supplier Payments
+    </a>
+    <a class="item" routerLink="/goodReceiveNote">
+      <i class="signal icon"></i>
+      Good Receive Note
+    </a>
+    <a class="item" routerLink="/purchaseOrderManager">
+      <i class="map icon"></i>
+      Purchase Order Manager
+    </a>
+    <a class="item" routerLink="/supplierManager">
+      <i class="globe icon"></i>
+      Supplier Manager
+    </a>
+    <a class="item" routerLink="/materialManager">
+      <i class="briefcase icon"></i>
+      Material Manager
+    </a>
+    <a class="item" routerLink="/constructionMaterial">
+      <i class="archive icon"></i>
+      Construction Material
+    </a>
+    <a class="item" routerLink="/smallEquipmentManager">
+      <i class="certificate icon"></i>
+      Small Equipment Manager
+    </a>
+  </div>
+  <div class="pusher" style="margin-right: 19%; max-height: 50%; overflow-y: scroll;">
+    <div class="ui basic segment" style="margin-top: 4%">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+

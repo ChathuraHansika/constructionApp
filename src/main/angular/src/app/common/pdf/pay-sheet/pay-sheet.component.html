@@ -1,0 +1,14 @@
+<div class="ui right aligned grid">
+  <div class="lest floated left aligned six wide column">
+    <div class="ui segment">
+      <button class="ui instagram button" (click)="pdf.saveAs(employee.fullName.replace(' ','_')+'pay_slip.pdf')">
+        <i class="print icon"></i>
+        Export As PDF
+      </button>
+    </div>
+  </div>
+</div>
+
+<kendo-pdf-export #pdf paperSize="A4" margin="0cm">
+  <app-pay-sheet-pdf [data]="data"></app-pay-sheet-pdf>
+</kendo-pdf-export>

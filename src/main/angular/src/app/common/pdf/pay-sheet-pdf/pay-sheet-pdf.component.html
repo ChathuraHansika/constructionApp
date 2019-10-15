@@ -1,0 +1,172 @@
+<div class="ui stacked segment" style="">
+  <div class="ui grid">
+    <div class="one column row" style="text-align: center;margin-top: 6%">
+      <div class="column"><b style="color: #0d71bb; margin-left: 1%; font-size: 25px">Employee </b>
+        <b style="color: #0d71bb; margin-left: 2%; font-size: 25px"> Pay Sheet</b>
+      </div>
+    </div>
+  </div>
+  <div class="ui divider"></div>
+
+  <div class="ui right aligned grid">
+    <div class="left floated right aligned six wide column">
+      <h3 class="ui header" style="color: #2bbbff; text-align: left; text-transform: capitalize;">
+        Akvasoft</h3>
+      <h6 class="" style="text-align: left; margin-bottom: -9%">No. 2, First Floor, City View Building,</h6>
+      <h6 class="" style="text-align: left; margin-bottom: -9%">Talbot Town, Galle. </h6>
+      <h6 class="" style="text-align: left; margin-bottom: -9%">+94 77 302 7936</h6>
+      <h6 class="" style="text-align: left; margin-bottom: -9%">info@akvasoft.com</h6>
+      <h6 class="" style="text-align: left; margin-bottom: 0%">www.akvasoft.com</h6>
+    </div>
+    <div class="right floated left aligned eight wide column">
+      <h3 class="ui header" style="color: #2bbbff; text-align: left;text-transform: capitalize">Employee
+        Details</h3>
+      <table class="ui very basic collapsing celled table">
+        <tbody>
+        <tr>
+          <td>
+            <h6 class="ui header">
+              <div class="content" style="color: #686868">Employee Name</div>
+            </h6>
+          </td>
+          <td>
+            <h6 class="ui header">
+              <div class="content">
+                {{data.data.fullName}}
+              </div>
+            </h6>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h6 class="ui header">
+              <div class="content" style="color: #686868">Designation</div>
+            </h6>
+          </td>
+          <td>
+            <h6 class="ui header">
+              <div class="content">
+                {{data.data.designation}}
+              </div>
+            </h6>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h6 class="ui header">
+              <div class="content" style="color: #686868">Month</div>
+            </h6>
+          </td>
+          <td>
+            <h6 class="ui header">
+              <div class="content">
+                {{data.data.year}}-{{data.data.month}}
+              </div>
+            </h6>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ui divider"></div>
+
+  <div class="ui right aligned grid">
+    <div class="left floated right aligned sixteen wide column">
+      <div class="">
+        <h3 class="ui header" style="color: #2bbbff; text-align: left;text-transform: capitalize">Scale of Payment:</h3>
+        <table class="ui table">
+          <thead>
+          <tr>
+            <th style="width: 70%">
+              <h6 class="ui header">
+                <div class="content" style="color: #343637">Description</div>
+              </h6>
+            </th>
+            <th style="width: 30%">
+              <h6 class="ui header">
+                <div class="content" style="color: #343637">Amount</div>
+              </h6>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let payment of data.data.details">
+            <td style="width: 70%">
+              <h6 class="ui header">
+                <div class="content" style="color: #686868">{{payment.desc.toLocaleUpperCase()}}</div>
+              </h6>
+            </td>
+            <td style="width: 30%">
+              <h6 class="ui header">
+                <div class="content">
+                  Rs. {{payment.amount}}
+                </div>
+              </h6>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h6 class="ui header">
+                <div class="content" style="color: #686868">ETF</div>
+              </h6>
+            </td>
+            <td>
+              <h6 class="ui header">
+                <div class="content">
+                  Rs. {{data.data.etf}}
+                </div>
+              </h6>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h6 class="ui header">
+                <div class="content" style="color: #686868">EPF</div>
+              </h6>
+            </td>
+            <td>
+              <h6 class="ui header">
+                <div class="content">
+                  Rs.  {{data.data.epf}}
+                </div>
+              </h6>
+            </td>
+          </tr>
+          <tr style="background-color: #0e566c;">
+            <td style="color: white; font-weight: bold">
+              NET SALARY
+            </td>
+            <td>
+              <h4 class="ui header" style="font-weight: bold">
+                <div class="content" style="color: white; font-weight: bold">
+                  Rs. {{data.netSalary}}
+                </div>
+              </h4>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ui divider"></div>
+  <div class="ui right aligned grid" style="margin-top: 5%">
+    <div class="left floated left aligned six wide column">
+      <h6 class="ui header">
+        Signature of the Employee
+      </h6>
+    </div>
+    <div class="right floated right aligned six wide column">
+      <h6 class="ui header">
+        HR Manager
+      </h6>
+    </div>
+  </div>
+  <div class="ui one column centered grid">
+    <div class="column" style="text-align: center">
+      <h6 class="ui header" style="color: #2bbbff; text-align: center">Akvasoft Solutions</h6>
+    </div>
+  </div>
+</div>

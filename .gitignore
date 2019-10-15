@@ -1,0 +1,63 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+upload-dir/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# compiled output
+src/main/angular/dist
+src/main/angular/tmp
+src/main/angular/out-tsc
+
+# dependencies
+src/main/angular/node_modules
+src/main/angular/semantic
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+src/main/angular/.sass-cache
+src/main/angular/connect.lock
+src/main/angular/coverage
+src/main/angular/libpeerconnection.log
+src/main/angular/npm-debug.log
+src/main/angular/testem.log
+src/main/angular/typings
+src/main/angular/semantic-ui
+
+# e2e
+/e2e/*.js
+/e2e/*.map

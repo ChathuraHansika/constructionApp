@@ -1,0 +1,447 @@
+<!--<h3 class="ui header">BankDetail Details</h3>-->
+<div class="ui mini form">
+  <div class="two wide fields">
+    <div class="column" style="width: 50%;margin-top: 0.8%">
+      <div class="ui raised violet segment" style="height: 100%;">
+        <div class="field">
+          <div class="grouped fields">
+            <div class="ui mini form">
+              <div class="inline fields">
+                <h3 class="ui header">Employee Details</h3>
+              </div>
+              <!--              <div class="ui top attached tabular menu">-->
+              <!--                <a class="item active" data-tab="first">Employee Details</a>-->
+              <!--                <a class="item" data-tab="second">Payment Details</a>-->
+              <!--                <a class="item" data-tab="third">Leave Details</a>-->
+              <!--              </div>-->
+              <div class="ui bottom attached tab segment active" data-tab="first">
+                <div class="ui mini form">
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;"> Title* :</label>
+                    <div class="twelve wide field">
+                      <div class="ui selection dropdown" style="width: 100%" id="title">
+                        <input type="hidden" name="title">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select Employee Title</div>
+                        <div class="menu">
+                          <div class="item" (click)="getTile('MR')">MR</div>
+                          <div class="item" (click)="getTile('MRS')">MRS</div>
+                          <div class="item" (click)="getTile('MISS')">MISS</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;"> Initials* :</label>
+                    <div class="twelve wide field">
+                      <input type="text" [(ngModel)]="initials" name="initials" class="form-control"
+                             required minlength="1" (click)="checkTitleData()" (keyup)="checkTitleData()"
+                             placeholder=" Initials" #initialText="ngModel">
+
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;"> First Name/s* :</label>
+                    <div class="twelve wide field">
+                      <input type="text" [(ngModel)]="firstName" required placeholder="  First Name/s"
+                             #fristNameText="ngModel">
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;"> Surname :</label>
+                    <div class="twelve wide field">
+                      <input type="text" [(ngModel)]="surName" required placeholder="Surname" #surNameText="ngModel">
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;"> NIC Number* :</label>
+                    <div class="twelve wide field">
+                      <input type="text" [(ngModel)]="NICNumber" placeholder=" NIC Number*" #nicText="ngModel">
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;"> Date of Birth* :</label>
+                    <div class="twelve wide field">
+                      <input type="date" [(ngModel)]="dob" placeholder=" Date of Birth" #dobText="ngModel" id="dob">
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;"> Address Line 1* :</label>
+                    <div class="twelve wide field">
+                      <input type="text" [(ngModel)]="addressLineOne" placeholder="Address Line 1"
+                             #addressLineOneText="ngModel">
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;">Address Line 2 :</label>
+                    <div class="twelve wide field">
+                      <input type="text" [(ngModel)]="addressLineTwo" placeholder="Address Line 2">
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 32%; text-align: right; font-size: 12px;"> City* :</label>
+                    <div class="eight wide field">
+                      <input type="text" [(ngModel)]="city" placeholder=" City">
+                    </div>
+                    <label style="width: 17%; text-align: right; font-size: 12px;"> Country* :</label>
+                    <div class="six wide field">
+                      <input type="text" [(ngModel)]="country" placeholder=" Country">
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 29%; text-align: right; font-size: 12px;"> Personal* :</label>
+                    <div class="six wide field">
+                      <input type="text" [(ngModel)]="contactNo1" placeholder=" Contact No. 1">
+                    </div>
+                    <label style="width: 23%; text-align: right; font-size: 12px;"> Home* : </label>
+                    <div class="six wide field">
+                      <input type="text" [(ngModel)]="contactNo2" placeholder=" Contact No. 2">
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;">Joined Date* :</label>
+                    <div class="twelve wide field">
+                      <input type="date" [(ngModel)]="joinedDate" placeholder="Joined Date" id="joinDate">
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;">Job Type* :</label>
+                    <div class="twelve wide field">
+                      <div class="ui selection dropdown" style="width: 100%" id="jobType">
+                        <input type="hidden" name="jobType">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select Job Type</div>
+                        <div class="menu">
+                          <div *ngFor="let job of jobTypes" class="item"
+                               (click)="getJobTypeData(job)">{{job.jobType}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;"> Designation* :</label>
+                    <div class="twelve wide field">
+                      <input type="text" [(ngModel)]="designation" placeholder="Designation">
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;"> Work Hours* :</label>
+                    <div class="twelve wide field">
+                      <input type="text" placeholder="Work Hours" [(ngModel)]="workHour">
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;"> No Pay Deduct* :</label>
+                    <div class="twelve wide field">
+                      <input type="text" placeholder="No Pay Deduct" [(ngModel)]="noPayDeduct">
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;"> OT Rate P/H* :</label>
+                    <div class="twelve wide field">
+                      <input type="text" [(ngModel)]="otrate" placeholder="OT Rate Per Hour">
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;"> Site Assigned* :</label>
+                    <div class="twelve wide field">
+                      <div class="ui selection dropdown" style="width: 100%" id="siteID">
+                        <input type="hidden" name="site">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select Site</div>
+                        <div class="menu">
+                          <div *ngFor="let site of sites" (click)="getSiteData(site)"
+                               class="item">{{site.projectName}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 22%; text-align: right; font-size: 12px;">Status* :</label>
+                    <div class="twelve wide field">
+                      <div class="ui selection dropdown" style="width: 100%" id="status">
+                        <input type="hidden" name="status">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select Employee Status</div>
+                        <div class="menu">
+                          <div class="item" (mousedown)="getStatusData('CURRENT')">CURRENT</div>
+                          <div class="item" (mousedown)="getStatusData('FIRED')">FIRED</div>
+                          <div class="item" (mousedown)="getStatusData('LEFT')">LEFT</div>
+                          <div class="item" (mousedown)="getStatusData('RETIRED')">RETIRED</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="inline fields">
+                    <label style="width: 29%; text-align: right; font-size: 12px;"> ETF* :</label>
+                    <div class="six wide field">
+                      <input [(ngModel)]="etf" type="text" placeholder="ETF">
+                    </div>
+                    <label style="width: 23%; text-align: right; font-size: 12px;"> EPF* :</label>
+                    <div class="six wide field">
+                      <input type="text" [(ngModel)]="epf" placeholder="EPF">
+                    </div>
+                  </div>
+                  <!--<div class="ui divider"></div>-->
+                  <div class="tiny ui green animated button" tabindex="0"
+                       style="left: 83%" (mousedown)="showPaymentDetails()">
+                    <div class="visible content">Next</div>
+                    <div class="hidden content">
+                      <i class="hand point right icon"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui bottom attached tab segment" data-tab="second">
+                <div class="ui mini form">
+                  <table class="ui striped table" style="width: 100%">
+                    <thead>
+                    <tr>
+                      <th>
+                        <button class="ui icon tiny button" (mousedown)="addPaymentRow()">
+                          <i class="add icon"> </i>
+                        </button>
+                      </th>
+                      <th style="text-align: center">Description</th>
+                      <th style="text-align: center">Type</th>
+                      <th style="text-align: center">Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let payment of jobTypePayments  let i = index">
+                      <td>
+                        <div class="ui icon tiny button" (click)="removePaymentRow(i)">
+                          <i class="minus icon"></i>
+                        </div>
+                      </td>
+                      <td style="text-align: center">
+                        <div *ngIf="payment.description.length > 0">{{payment.description}}</div>
+                        <input *ngIf="payment.description.length < 1" class="mini" type="text"
+                               placeholder="Payment Description"
+                               value="" id="{{i+'desc'}}" (focusout)="changeValues(i,$event,'description')">
+                      </td>
+                      <td style="text-align: center;">
+                        {{payment.salaryType}}
+                      </td>
+
+
+                      <td style="text-align: center">
+                        <div class="ui mini form"
+                             *ngIf="payment.salaryType === 'ALLOWANCE' || payment.salaryType === 'VARIABLE'">
+                          <div class="inline fields">
+                            <div class="field">
+                              <div class="ui radio checkbox">
+                                <input type="radio" [checked]="payment.perDay"
+                                       (click)="changeValues(i,$event,'perDay')">
+                                <label>P/Day</label>
+                              </div>
+                            </div>
+                            <div class="field">
+                              <div class="ui radio checkbox">
+                                <input type="radio" [checked]="payment.perHour"
+                                       (click)="changeValues(i,$event,'perHour')">
+                                <label>P/Hour</label>
+                              </div>
+                            </div>
+                          </div>
+                          <input class="mini" type="text" placeholder="Amount" value="{{payment.amount}}"
+                                 (keyup)="changeValues(i,$event,'Amount')">
+                        </div>
+                        <input type="text" placeholder="Amount" value="{{payment.amount}}"
+                               (keyup)="changeValues(i,$event,'baseAmount')"
+                               *ngIf="payment.salaryType === 'BASE' || payment.salaryType === 'DEFINITE'">
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                  <div class="inline fields">
+                    <div class="tiny ui green animated button" tabindex="0" style="left: 73%"
+                         (mousedown)="showEmployeeDetails()">
+                      <div class="visible content">Back</div>
+                      <div class="hidden content">
+                        <i class="hand point left icon"></i>
+                      </div>
+                    </div>
+                    <div class="tiny ui green animated button" tabindex="0" style="left: 73%"
+                         (mousedown)="showLeaves()">
+                      <div class="visible content">Next</div>
+                      <div class="hidden content">
+                        <i class="hand point right icon"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui bottom attached tab segment" data-tab="third">
+                <div class="ui mini form">
+                  <table class="ui striped table" style="width: 100%">
+                    <thead>
+                    <tr>
+                      <th>
+                        <div class="ui icon mini button" (mousedown)="addleaveRow()">
+                          <i class="add icon"></i>
+                        </div>
+                      </th>
+                      <th style="text-align: center">Leave Type</th>
+                      <th style="text-align: center">Deduct Form</th>
+                      <th style="text-align: center">Portion</th>
+                      <th style="text-align: center">Amount</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let leaves of jobTypeLeaves let l=index">
+                      <td *ngIf="leaves.type !== 'NOPAY'">
+                        <div class="ui icon tiny button" (click)="removeLeaveRow(l)">
+                          <i class="minus icon"></i>
+                        </div>
+                      </td>
+                      <td style="text-align: center" *ngIf="leaves.type !== 'NOPAY'">
+
+                        <div class="ui mini form">
+                          <div class="inline fields">
+                            <div *ngIf="l<3"><label>{{leaves.type}}</label></div>
+                          </div>
+                        </div>
+
+                        <div class="ui mini form" *ngIf="l>2">
+                          <div class="inline fields">
+
+                            <select style="height: 17%" class="ui tiny search dropdown"
+                                    (change)="getLeaveTypeData(l,$event,'leaveTypeValue')">
+                              <ng-container *ngFor="let leaveType of leaveTypes">
+                                <option *ngIf="leaveType.id!=4"
+                                        value="{{leaveType.type}}">
+                                  {{leaveType.type}}
+                                </option>
+                              </ng-container>
+                            </select>
+
+                          </div>
+                        </div>
+
+
+                      </td>
+                      <td style="text-align: center;" *ngIf="leaves.type !== 'NOPAY'">
+                        <div class="ui mini form">
+                          <div class="inline fields">
+                            <select style="height: 17%" class="ui tiny search dropdown"
+                                    (change)="getLeaveTypeData(l,$event,'reductFrom')">
+                              <ng-container *ngFor="let leaveType of leaveTypes">
+                                <option *ngIf="leaveType.reduct_from!='SALARY'"
+                                        value="{{leaveType.reduct_from}}">{{leaveType.reduct_from}}
+                                </option>
+                              </ng-container>
+                            </select>
+                          </div>
+                        </div>
+                      </td>
+                      <td style="text-align: center" *ngIf="leaves.type !== 'NOPAY'">
+                        <div class="ui mini form">
+                          <div class="inline fields">
+                            <input type="text" placeholder="Portion" (keyup)="getLeaveTypeData(l,$event,'portion')"
+                                   value="{{leaves.portion}}">
+                          </div>
+                        </div>
+                      </td>
+                      <td style="text-align: center;" *ngIf="leaves.type !== 'NOPAY'">
+                        <div class="ui mini form">
+                          <div class="inline fields">
+                            <input type="text" placeholder="Amount" (keyup)="getLeaveTypeData(l,$event,'Amount')"
+                                   value="{{leaves.amount}}">
+                          </div>
+                        </div>
+                      </td>
+
+                    </tr>
+                    </tbody>
+                  </table>
+                  <div class="inline fields">
+                    <div class="tiny ui green animated button" tabindex="0" style="left: 73%"
+                         (mousedown)="showPaymentDetails()">
+                      <div class="visible content">Back</div>
+                      <div class="hidden content">
+                        <i class="hand point left icon"></i>
+                      </div>
+                    </div>
+                    <div class="tiny ui green animated button" tabindex="0" style="left: 73%"
+                         (click)="saveEmployeeData()">
+                      <div class="visible content">Save</div>
+                      <div class="hidden content">
+                        <i class="save outline icon"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column" style="width: 50%;margin-top: 0.8%;">
+      <div class="ui raised violet segment" style="left: 0.5%; height: 100%;">
+        <div class="ui mini form">
+          <div class="inline fields">
+            <h3 class="ui header" style="margin-top: 10px;margin-right: 2%">Existing Sites</h3>
+            <div class="eight wide field">
+              <div class="ui selection dropdown" style="width: 100%">
+                <input type="hidden" name="site">
+                <i class="dropdown icon"></i>
+                <div class="default text">Select Site</div>
+                <div class="menu">
+                  <div *ngFor="let site of sites" (click)="getSiteData(site)"
+                       class="item">{{site.projectName}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ui checkbox" style="left: 10%">
+              <div class="ui tiny animated button" tabindex="0" (mousedown)="loadEmployees()">
+                <div class="visible content">View</div>
+                <div class="hidden content">
+                  <i class="right arrow icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui mini form">
+          <div class="inline fields">
+            <div class="eight wide field">
+              <input type="text" placeholder="NIC" [(ngModel)]="searchNic" (keyup.enter)="searchEmployee()">
+              <button class="circular ui tiny icon black button" (click)="searchEmployee()">
+                <i class="icon search"></i>
+              </button>
+            </div>
+            <label></label>
+            <div class="eight wide field">
+              <input type="text" placeholder="Full Name" [(ngModel)]="searchName" (keyup.enter)="searchEmployee()">
+              <button class="circular ui tiny icon black button" (click)="searchEmployees()">
+                <i class="icon search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="ui raised very compact table">
+          <thead>
+          <tr>
+            <th style="text-align: center">Site Name</th>
+            <th style="text-align: center">Employee Name</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of employeeList let i = index" style="cursor: pointer"
+              (click)="viewSelectedEmployee(data,i)">
+            <td style="text-align: center; cursor: pointer">{{data.siteAssignedName}}</td>
+            <td style="text-align: center; cursor: pointer">{{data.firstName}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

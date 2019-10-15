@@ -1,0 +1,320 @@
+<div class="ui small test modal add">
+  <i class="close icon"></i>
+  <div class="header">
+    Add Equipment Names
+  </div>
+  <div class="content">
+    <div class="field ui teal message segment">
+      <div class="ui tiny form">
+        <div class="inline fields">
+          <label style="width: 20%; text-align: right">Equipment Name *</label>
+          <div class="eight wide field">
+            <input type="text" placeholder="Name">
+          </div>
+          <div class="ui positive right labeled icon tiny button">
+            Save
+            <i class="checkmark icon"></i>
+          </div>
+        </div>
+        <table class="ui teal celled striped table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td></td>
+            <td>John Lilki</td>
+            <td>
+              <div class="circular ui mini teal animated button" tabindex="0">
+                <div class="visible content">Edit</div>
+                <div class="hidden content">
+                  <i class="pencil alternate icon"></i>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Jamie Harington</td>
+            <td>
+              <div class="circular ui mini teal animated button" tabindex="0">
+                <div class="visible content">Edit</div>
+                <div class="hidden content">
+                  <i class="pencil alternate icon"></i>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Jill Lewis</td>
+            <td>
+              <div class="circular ui mini teal animated button" tabindex="0">
+                <div class="visible content">Edit</div>
+                <div class="hidden content">
+                  <i class="pencil alternate icon"></i>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>John Lilki</td>
+            <td>
+              <div class="circular ui mini teal animated button" tabindex="0">
+                <div class="visible content">Edit</div>
+                <div class="hidden content">
+                  <i class="pencil alternate icon"></i>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>John Lilki</td>
+            <td>
+              <div class="circular ui mini teal animated button" tabindex="0">
+                <div class="visible content">Edit</div>
+                <div class="hidden content">
+                  <i class="pencil alternate icon"></i>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Jamie Harington</td>
+            <td>
+              <div class="circular ui mini teal animated button" tabindex="0">
+                <div class="visible content">Edit</div>
+                <div class="hidden content">
+                  <i class="pencil alternate icon"></i>
+                </div>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui negative button">
+      No
+    </div>
+  </div>
+</div>
+<!--<h3 class="ui header">BankDetail Details</h3>-->
+<div class="ui mini form">
+  <div class="two wide fields">
+    <div class="column" style="width: 50%;margin-top: 0.8%">
+      <div class="ui raised violet segment" style="height: 100%;">
+        <div class="field">
+          <div class="grouped fields">
+            <div class="ui mini form">
+              <div class="inline fields">
+                <h3 class="ui header">Details</h3>
+              </div>
+              <div class="inline fields">
+                <label style="width: 27%; text-align: right; font-size: 12px">Equipment Type *</label>
+                <div class="twelve wide field">
+                  <select style="height: 13%" class="ui tiny search dropdown">
+                    <option value="">Select Site</option>
+                    <option value="">Site 1</option>
+                    <option value="">Site 2</option>
+                    <option value="">Site 3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 27%; text-align: right; font-size: 12px"> Equipment Name *</label>
+                <div class="twelve wide field">
+                  <select style="height: 13%" class="ui tiny search dropdown">
+                    <option value="">Select Site</option>
+                    <option value="">Site 1</option>
+                    <option value="">Site 2</option>
+                    <option value="">Site 3</option>
+                  </select>
+                  <div class="ui icon tiny button" (click)="addModal()">
+                    <i class="add icon"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 27%; text-align: right; font-size: 12px;"> Description *</label>
+                <div class="twelve wide field">
+                  <textarea rows="2"></textarea>
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 27%; text-align: right; font-size: 12px;"> Reg/ Serial Number *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder=" Reg/ Serial Number">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 27%; text-align: right; font-size: 12px;"> Purchased Date *</label>
+                <div class="twelve wide field">
+                  <input type="date" placeholder=" Purchased Date">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 27%; text-align: right; font-size: 12px;"> Price *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder=" Price">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 27%; text-align: right; font-size: 12px;">Ann. Depriciation(%) *</label>
+                <div class="twelve wide field">
+                  <input type="text" placeholder=" Ann. Depriciation(%)">
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 27%; text-align: right; font-size: 12px;">Status *</label>
+                <div class="twelve wide field">
+                  <select style="height: 13%" class="ui tiny search dropdown">
+                    <option value="">Select Status</option>
+                    <option value="">Site 1</option>
+                    <option value="">Site 2</option>
+                    <option value="">Site 3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="inline fields">
+                <label style="width: 27%; text-align: right; font-size: 12px;">Site *</label>
+                <div class="twelve wide field">
+                  <select style="height: 13%" class="ui tiny search dropdown">
+                    <option value="">Select site</option>
+                    <option value="">Site 1</option>
+                    <option value="">Site 2</option>
+                    <option value="">Site 3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="ui green tiny animated button" tabindex="0" style="left: 83%">
+                <div class="visible content">Save</div>
+                <div class="hidden content">
+                  <i class="address book icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--<div class="tiny ui green animated button" tabindex="0" style="left: 83%">-->
+        <!--<div class="visible content">Pay</div>-->
+        <!--<div class="hidden content">-->
+        <!--<i class="paypal icon"></i>-->
+        <!--</div>-->
+        <!--</div>-->
+      </div>
+    </div>
+    <div class="column" style="width: 50%;margin-top: 0.8%;">
+      <div class="ui raised violet segment" style="left: 0.5%; height: 100%;">
+        <div class="inline fields">
+          <h3 class="ui header">Equipment List</h3>
+          <div class="eight wide field">
+            <div class="ui action input" style="left: 25%;padding-bottom: 3%">
+              <select style="height: 13%" class="ui tiny search dropdown">
+                <option value="">Equipment Name</option>
+                <option value="">Mixer</option>
+                <option value="">Compressor</option>
+                <option value="">Site 3</option>
+              </select>
+              <button class="circular ui icon black button">
+                <i class="icon search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="ui raised very compact table">
+          <thead>
+          <tr>
+            <th style="text-align: center">#</th>
+            <th style="text-align: center">Serial Number</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td style="text-align: center"></td>
+            <td style="text-align: center" data-tooltip="Hover: Show description"
+                data-position="bottom center" data-inverted="" data-variation="huge basic">test
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center"></td>
+            <td style="text-align: center" data-tooltip="Hover: Show description"
+                data-position="bottom center" data-inverted="" data-variation="huge basic">test
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center"></td>
+            <td style="text-align: center" data-tooltip="Hover: Show description"
+                data-position="bottom center" data-inverted="" data-variation="huge basic">test
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center"></td>
+            <td style="text-align: center" data-tooltip="Hover: Show description"
+                data-position="bottom center" data-inverted="" data-variation="huge basic">test
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center"></td>
+            <td style="text-align: center" data-tooltip="Hover: Show description"
+                data-position="bottom center" data-inverted="" data-variation="huge basic">test
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center"></td>
+            <td style="text-align: center" data-tooltip="Hover: Show description"
+                data-position="bottom center" data-inverted="" data-variation="huge basic">test
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center"></td>
+            <td style="text-align: center" data-tooltip="Hover: Show description"
+                data-position="bottom center" data-inverted="" data-variation="huge basic">test
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center"></td>
+            <td style="text-align: center" data-tooltip="Hover: Show description"
+                data-position="bottom center" data-inverted="" data-variation="huge basic">test
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center"></td>
+            <td style="text-align: center" data-tooltip="Hover: Show description"
+                data-position="bottom center" data-inverted="" data-variation="huge basic">test
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center"></td>
+            <td style="text-align: center" data-tooltip="Hover: Show description"
+                data-position="bottom center" data-inverted="" data-variation="huge basic">test
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center"></td>
+            <td style="text-align: center" data-tooltip="Hover: Show description"
+                data-position="bottom center" data-inverted="" data-variation="huge basic">test
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center"></td>
+            <td style="text-align: center" data-tooltip="Hover: Show description"
+                data-position="bottom center" data-inverted="" data-variation="huge basic">test
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
