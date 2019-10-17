@@ -16,8 +16,8 @@
               <div class="inline fields">
                 <label style="width: 22%; text-align: right; font-size: 12px"> Bank Name *</label>
                 <div class="twelve wide field">
-                  <select style="height: 13%" class="ui tiny search dropdown"
-                          (change)="loadAccountTypesAndStatus($event.target.value)">
+                  <select style="height: 13%" class="ui tiny search dropdown" (change)="getBankId($event.target.value)">
+                    <option value="0">Please Select Bank</option>
                     <option *ngFor="let bank of banks" value="{{bank.id}}">{{bank.name}}</option>
                   </select>
                 </div>
@@ -25,57 +25,62 @@
               <div class="inline fields">
                 <label style="width: 22%; text-align: right; font-size: 12px;"> Branch *</label>
                 <div class="twelve wide field">
-                  <input type="text" placeholder="Branch">
+                  <input type="text" placeholder="Branch" [(ngModel)]="bankDetailDto.branch">
                 </div>
               </div>
               <div class="inline fields">
                 <label style="width: 22%; text-align: right; font-size: 12px;"> A/C Number *</label>
                 <div class="twelve wide field">
-                  <input type="text" placeholder="A/C Number">
+                  <input type="text" placeholder="A/C Number" [(ngModel)]="bankDetailDto.accountNumber">
                 </div>
               </div>
               <div class="inline fields">
                 <label style="width: 22%; text-align: right; font-size: 12px;"> A/C Name*</label>
                 <div class="twelve wide field">
-                  <input type="text" placeholder="A/C Name">
+                  <input type="text" placeholder="A/C Name" [(ngModel)]="bankDetailDto.accountName">
                 </div>
               </div>
               <div class="inline fields">
                 <label style="width: 22%; text-align: right; font-size: 12px;"> Site *</label>
                 <div class="twelve wide field">
-                  <select style="height: 13%" class="ui tiny search dropdown">
-                    <option *ngFor="let site of sites" value="">{{site.projectName}}</option>
-
+                  <select style="height: 13%" class="ui tiny search dropdown" (change)="getSiteID($event.target.value)">
+                    <option value="0">Select Site</option>
+                    <option *ngFor="let site of sites" value={{site.siteId}}>{{site.projectName}}</option>
                   </select>
                 </div>
               </div>
               <div class="inline fields">
                 <label style="width: 22%; text-align: right; font-size: 12px;"> A/C Type *</label>
                 <div class="twelve wide field">
-                  <select style="height: 13%" class="ui tiny search dropdown">
-                    <option *ngFor="let accountType of accountTypes" value="">{{accountType}}</option>
+                  <select style="height: 13%" class="ui tiny search dropdown"
+                          (change)="getAccountType($event.target.value)">
+                    <option value="0">Select A/C Type</option>
+                    <option value="SAVING">SAVING</option>
+                    <option value="CURRENT">CURRENT</option>
                   </select>
                 </div>
               </div>
               <div class="inline fields">
                 <label style="width: 22%; text-align: right; font-size: 12px;">A/C Status *</label>
                 <div class="twelve wide field">
-                  <select style="height: 13%" class="ui tiny search dropdown">
-                    <option *ngFor="let accountState of accountStatus" value="">{{accountState}}</option>
-
+                  <select style="height: 13%" class="ui tiny search dropdown"
+                          (change)="getAccountStatus($event.target.value)">
+                    <option value="0">Select A/C Status</option>
+                    <option value="ACT">ACTIVE</option>
+                    <option value="INA">INACTIVE</option>
                   </select>
                 </div>
               </div>
               <div class="inline fields">
                 <label style="width: 22%; text-align: right; font-size: 12px;">Balance *</label>
                 <div class="twelve wide field">
-                  <input type="text" placeholder="Invoice No./s">
+                  <input type="text" placeholder="Invoice No./s" [(ngModel)]="bankDetailDto.balance">
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="tiny ui green animated button" tabindex="0" style="left: 83%">
+        <div class="tiny ui green animated button" (click)="save()" tabindex="0" style="left: 83%">
           <div class="visible content">Save</div>
           <div class="hidden content">
             <i class="save outline icon"></i>

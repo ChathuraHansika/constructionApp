@@ -3,6 +3,7 @@ package com.akvasoft.construction.entity.accounting;
 import com.akvasoft.construction.dto.accounting.BankDetailDto;
 import com.akvasoft.construction.entity.ConstructionSite;
 import com.akvasoft.construction.util.DomainConstant;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +23,7 @@ public class BankDetail implements Serializable {
     @Column(name = "BANK_DETAIL_ID")
     private Integer bankDetailId;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "BANK_ID")
     private Bank bank;
@@ -35,6 +37,7 @@ public class BankDetail implements Serializable {
     @Column(name = "ACCOUNT_NAME")
     private String accountName;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "SITE_ID")
     private ConstructionSite site;
@@ -65,6 +68,24 @@ public class BankDetail implements Serializable {
                 ", balance=" + balance +
                 '}';
     }
+
+    public BankDetail() {
+
+    }
+
+
+    public BankDetail(BankDetailDto dto, ConstructionSite site, Bank bank, DomainConstant.Status status,
+                      DomainConstant.BankAccountType type) {
+        this.setAccountName(dto.getAccountName());
+        this.setAccountNumber(dto.getAccountNumber());
+        this.setBalance(dto.getBalance());
+        this.setBranch(dto.getBranch());
+        this.site = site;
+        this.bank = bank;
+        this.type = type;
+        this.status = status;
+    }
+
 
     public BankDetailDto getBankDetailDto(BankDetail bankDetail) {
         BankDetailDto dto = new BankDetailDto();

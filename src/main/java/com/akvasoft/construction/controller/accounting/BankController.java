@@ -5,12 +5,11 @@
  */
 package com.akvasoft.construction.controller.accounting;
 
+import com.akvasoft.construction.dto.accounting.BankDetailDto;
 import com.akvasoft.construction.dto.common.Response;
 import com.akvasoft.construction.service.accounting.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Chathura
@@ -26,15 +25,14 @@ public class BankController {
         return null;
     }
 
-    @RequestMapping("/loadBanks")
+    @GetMapping(value = "/loadBanks")
     public Response loadBanks() {
-        System.out.println(bankService.loadBanks());
         return new Response(bankService.loadBanks(), true);
     }
 
-    @RequestMapping("/loadAccountTypes")
-    public Response loadAccountTypes(@RequestParam(name = "bankId") int id) {
-        return new Response(bankService.loadAccountTypes(id), true);
+    @PostMapping(value = "/saveAccount")
+    public Response saveAccount(@RequestBody BankDetailDto dto) {
+        return new Response(bankService.saveBankDetails(dto), true);
     }
 
 }

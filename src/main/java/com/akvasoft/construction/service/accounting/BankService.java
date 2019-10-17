@@ -7,16 +7,16 @@ package com.akvasoft.construction.service.accounting;
 
 import com.akvasoft.construction.dto.accounting.BankDetailDto;
 import com.akvasoft.construction.dto.accounting.BankDto;
+import com.akvasoft.construction.entity.accounting.BankDetail;
+
 import java.util.List;
-import org.springframework.stereotype.Service;
 
 /**
- *
  * @author Chathura
  */
 
 public interface BankService {
-    public List<BankDto>loadBanks();
+    List<BankDto> loadBanks();
 
-    public List<BankDetailDto> loadAccountTypes(int bankId);
+    BankDetail saveBankDetails(BankDetailDto dto);
 }

@@ -15,7 +15,11 @@ export class AccoutingService {
     return this.dataService.request(SETTING.ENDPOINTS.loadBanks);
   }
 
-  public loadAccountTypes(data:any) {
-    return this.dataService.request(SETTING.ENDPOINTS.loadAccountTypes,data);
+  public loadAccountTypes(data: any) {
+    return this.dataService.request(SETTING.ENDPOINTS.loadAccountTypes, data);
+  }
+
+  public saveAccount(data: any) {
+    return this.dataService.request(SETTING.ENDPOINTS.saveAccount, data);
   }
 }

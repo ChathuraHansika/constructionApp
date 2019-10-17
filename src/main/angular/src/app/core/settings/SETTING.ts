@@ -123,6 +123,10 @@ export class SETTING {
     loadAccountTypes: {
       url: SETTING.HTTP_PREFIX + '/api/accounting/loadAccountTypes',
       type: 'GET'
+    },
+    saveAccount: {
+      url: SETTING.HTTP_PREFIX + '/api/accounting/saveAccount',
+      type: 'POST'
     }
   }
 }
