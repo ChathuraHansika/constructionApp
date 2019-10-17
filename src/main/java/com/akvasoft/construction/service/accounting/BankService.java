@@ -5,6 +5,7 @@
  */
 package com.akvasoft.construction.service.accounting;
 
+import com.akvasoft.construction.dto.accounting.BankDetailDto;
 import com.akvasoft.construction.dto.accounting.BankDto;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -16,4 +17,6 @@ import org.springframework.stereotype.Service;
 
 public interface BankService {
     public List<BankDto>loadBanks();
+
+    public List<BankDetailDto> loadAccountTypes(int bankId);
 }

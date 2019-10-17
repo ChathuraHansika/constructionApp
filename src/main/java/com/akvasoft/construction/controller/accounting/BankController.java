@@ -9,10 +9,10 @@ import com.akvasoft.construction.dto.common.Response;
 import com.akvasoft.construction.service.accounting.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
  * @author Chathura
  */
 @RestController
@@ -30,6 +30,11 @@ public class BankController {
     public Response loadBanks() {
         System.out.println(bankService.loadBanks());
         return new Response(bankService.loadBanks(), true);
+    }
+
+    @RequestMapping("/loadAccountTypes")
+    public Response loadAccountTypes(@RequestParam(name = "bankId") int id) {
+        return new Response(bankService.loadAccountTypes(id), true);
     }
 
 }

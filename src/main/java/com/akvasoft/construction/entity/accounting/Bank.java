@@ -3,6 +3,7 @@ package com.akvasoft.construction.entity.accounting;
 import com.akvasoft.construction.dto.accounting.BankDto;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "T_BANK")
@@ -17,6 +18,9 @@ public class Bank implements Serializable {
 
     @Column(name = "NAME")
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "bank")
+    private List<BankDetail> bankDetails;
 
     public Integer getBankId() {
         return bankId;

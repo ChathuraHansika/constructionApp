@@ -13,6 +13,9 @@ export class AccoutingService {
 
   public loadBanks(): Observable<any> {
     return this.dataService.request(SETTING.ENDPOINTS.loadBanks);
+  }
 
+  public loadAccountTypes(data:any) {
+    return this.dataService.request(SETTING.ENDPOINTS.loadAccountTypes,data);
   }
 }

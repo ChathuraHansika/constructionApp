@@ -1,13 +1,18 @@
 package com.akvasoft.construction.entity.accounting;
 
+import com.akvasoft.construction.dto.accounting.BankDetailDto;
 import com.akvasoft.construction.entity.ConstructionSite;
 import com.akvasoft.construction.util.DomainConstant;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "T_BANK_DETAIL")
 public class BankDetail implements Serializable {
     private static final long serialVersionUID = 809123159059791368L;
@@ -45,78 +50,6 @@ public class BankDetail implements Serializable {
     @Column(name = "BALANCE")
     private BigDecimal balance;
 
-    public Integer getBankDetailId() {
-        return bankDetailId;
-    }
-
-    public void setBankDetailId(Integer bankDetailId) {
-        this.bankDetailId = bankDetailId;
-    }
-
-    public Bank getBank() {
-        return bank;
-    }
-
-    public void setBank(Bank bank) {
-        this.bank = bank;
-    }
-
-    public String getBranch() {
-        return branch;
-    }
-
-    public void setBranch(String branch) {
-        this.branch = branch;
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public String getAccountName() {
-        return accountName;
-    }
-
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
-    }
-
-    public ConstructionSite getSite() {
-        return site;
-    }
-
-    public void setSite(ConstructionSite site) {
-        this.site = site;
-    }
-
-    public DomainConstant.BankAccountType getType() {
-        return type;
-    }
-
-    public void setType(DomainConstant.BankAccountType type) {
-        this.type = type;
-    }
-
-    public DomainConstant.Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(DomainConstant.Status status) {
-        this.status = status;
-    }
-
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
-
     @Override
     public String
     toString() {
@@ -132,4 +65,20 @@ public class BankDetail implements Serializable {
                 ", balance=" + balance +
                 '}';
     }
+
+    public BankDetailDto getBankDetailDto(BankDetail bankDetail) {
+        BankDetailDto dto = new BankDetailDto();
+        dto.setAccountName(bankDetail.accountName);
+        dto.setAccountNumber(bankDetail.accountNumber);
+        dto.setBalance(bankDetail.balance);
+        dto.setBankDetailId(bankDetail.bankDetailId);
+        dto.setBranch(bankDetail.branch);
+        dto.setSiteId(bankDetail.site.getSiteId());
+        dto.setStatus(bankDetail.status.toString());
+        dto.setType(bankDetail.type.toString());
+        dto.setBankId(bankDetail.bank.getBankId());
+        return dto;
+    }
+
+
 }

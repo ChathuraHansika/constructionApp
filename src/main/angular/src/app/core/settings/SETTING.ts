@@ -119,6 +119,10 @@ export class SETTING {
     loadBanks: {
       url: SETTING.HTTP_PREFIX + '/api/accounting/loadBanks',
       type: 'GET'
+    },
+    loadAccountTypes: {
+      url: SETTING.HTTP_PREFIX + '/api/accounting/loadAccountTypes',
+      type: 'GET'
     }
   }
 }

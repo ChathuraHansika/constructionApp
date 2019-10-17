@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LocalStorageService} from "ngx-webstorage";
 
 @Component({
   selector: 'app-approval-requests-manager',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./approval-requests-manager.component.scss']
 })
 export class ApprovalRequestsManagerComponent implements OnInit {
-
-  constructor() { }
+banks:any;
+  constructor(private localStorage:LocalStorageService) { }
 
   ngOnInit() {
+    this.banks=this.localStorage.retrieve('BANKS');
+
   }
 
 }
