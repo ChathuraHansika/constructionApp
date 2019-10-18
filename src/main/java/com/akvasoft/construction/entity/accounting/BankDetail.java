@@ -98,6 +98,8 @@ public class BankDetail implements Serializable {
         dto.setStatus(bankDetail.status.toString());
         dto.setType(bankDetail.type.toString());
         dto.setBankId(bankDetail.bank.getBankId());
+        dto.setBank(bankDetail.getBank().getName());
+        dto.setSite(bankDetail.getSite().getProjectName());
         return dto;
     }
 

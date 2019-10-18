@@ -35,4 +35,13 @@ public class BankController {
         return new Response(bankService.saveBankDetails(dto), true);
     }
 
+    @GetMapping(value = "/loadAccounts")
+    public Response loadAccounts() {
+        return new Response(bankService.loadAccounts(), true);
+    }
+
+    @GetMapping(value = "/accountSearchByBankId")
+    public Response accountSearchByBankId(@RequestParam("bankId") int bankId){
+        return new Response(bankService.accountSearchByBankId(bankId),true);
+    }
 }

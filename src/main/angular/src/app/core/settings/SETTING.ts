@@ -127,6 +127,15 @@ export class SETTING {
     saveAccount: {
       url: SETTING.HTTP_PREFIX + '/api/accounting/saveAccount',
       type: 'POST'
+    },
+    loadAccounts: {
+      url: SETTING.HTTP_PREFIX + '/api/accounting/loadAccounts',
+      type: 'GET'
+    }, accountSearchByBankId: {
+      url: SETTING.HTTP_PREFIX + '/api/accounting/accountSearchByBankId',
+      type: 'GET'
     }
+
+
   }
 }

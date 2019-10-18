@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,6 +49,18 @@ public class BankServiceImpl implements BankService {
                 DomainConstant.BankAccountType.getBankAccountType(dto.getType()))
         );
 
+    }
+
+    @Override
+    public List<BankDetailDto> loadAccounts() {
+        return bankDetailRepo.findAll().stream().map(detail -> new BankDetail()
+                .getBankDetailDto(detail)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BankDetailDto> accountSearchByBankId(int bankId) {
+        return bankDetailRepo.findByBank_BankId(bankId).stream().map(detail -> new BankDetail()
+                .getBankDetailDto(detail)).collect(Collectors.toList());
     }
 
 

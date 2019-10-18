@@ -19,4 +19,8 @@ public interface BankService {
     List<BankDto> loadBanks();
 
     BankDetail saveBankDetails(BankDetailDto dto);
+
+    List<BankDetailDto> loadAccounts();
+
+    List<BankDetailDto> accountSearchByBankId(int bankId);
 }

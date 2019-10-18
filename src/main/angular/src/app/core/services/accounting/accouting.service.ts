@@ -22,4 +22,13 @@ export class AccoutingService {
   public saveAccount(data: any) {
     return this.dataService.request(SETTING.ENDPOINTS.saveAccount, data);
   }
+
+  public loadAccounts() {
+    return this.dataService.request(SETTING.ENDPOINTS.loadAccounts);
+  }
+
+
+  accountSearchByBankId(data: any) {
+return this.dataService.request(SETTING.ENDPOINTS.accountSearchByBankId,data);
+  }
 }

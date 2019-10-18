@@ -94,13 +94,11 @@
           <h3 class="ui header">Account</h3>
           <div class="eight wide field">
             <div class="ui action input" style="left: 25%;padding-bottom: 3%">
-              <select style="height: 13%" class="ui tiny search dropdown">
-                <option value="">Select A/C No.</option>
-                <option value="">Site 1</option>
-                <option value="">Site 2</option>
-                <option value="">Site 3</option>
+              <select style="height: 13%" class="ui tiny search dropdown"  (change)="getBankIdSearch($event.target.value)">
+                <option value="0">Please Select Bank</option>
+                <option *ngFor="let bank of banks" value="{{bank.id}}">{{bank.name}}</option>
               </select>
-              <button class="circular ui icon black button">
+              <button class="circular ui icon black button" (click)="bankSearchByID()">
                 <i class="icon search"></i>
               </button>
             </div>
@@ -116,109 +114,11 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
+          <tr *ngFor="let b of bankDetails" (click)="setData(b)">
             <td style="text-align: center" class="" data-tooltip="Hover to view bank and site"
-                data-position="right center" data-inverted="" data-variation="huge basic"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center">
-              <div class="circular ui mini teal animated button" tabindex="0">
-                <div class="visible content">Edit</div>
-                <div class="hidden content">
-                  <i class="pencil alternate icon"></i>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td style="text-align: center" class="" data-tooltip="Hover to view bank and site"
-                data-position="right center" data-inverted="" data-variation="huge basic"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center">
-              <div class="circular ui mini teal animated button" tabindex="0">
-                <div class="visible content">Edit</div>
-                <div class="hidden content">
-                  <i class="pencil alternate icon"></i>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td style="text-align: center" class="" data-tooltip="Hover to view bank and site"
-                data-position="right center" data-inverted="" data-variation="huge basic"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center">
-              <div class="circular ui mini teal animated button" tabindex="0">
-                <div class="visible content">Edit</div>
-                <div class="hidden content">
-                  <i class="pencil alternate icon"></i>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td style="text-align: center" class="" data-tooltip="Hover to view bank and site"
-                data-position="right center" data-inverted="" data-variation="huge basic"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center">
-              <div class="circular ui mini teal animated button" tabindex="0">
-                <div class="visible content">Edit</div>
-                <div class="hidden content">
-                  <i class="pencil alternate icon"></i>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td style="text-align: center" class="" data-tooltip="Hover to view bank and site"
-                data-position="right center" data-inverted="" data-variation="huge basic"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center">
-              <div class="circular ui mini teal animated button" tabindex="0">
-                <div class="visible content">Edit</div>
-                <div class="hidden content">
-                  <i class="pencil alternate icon"></i>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td style="text-align: center" class="" data-tooltip="Hover to view bank and site"
-                data-position="right center" data-inverted="" data-variation="huge basic"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center">
-              <div class="circular ui mini teal animated button" tabindex="0">
-                <div class="visible content">Edit</div>
-                <div class="hidden content">
-                  <i class="pencil alternate icon"></i>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td style="text-align: center" class="" data-tooltip="Hover to view bank and site"
-                data-position="right center" data-inverted="" data-variation="huge basic"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center">
-              <div class="circular ui mini teal animated button" tabindex="0">
-                <div class="visible content">Edit</div>
-                <div class="hidden content">
-                  <i class="pencil alternate icon"></i>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td style="text-align: center" class="" data-tooltip="Hover to view bank and site"
-                data-position="right center" data-inverted="" data-variation="huge basic"></td>
-            <td style="text-align: center"></td>
-            <td style="text-align: center"></td>
+                data-position="right center" data-inverted="" data-variation="huge basic">{{b.accountNumber}}</td>
+            <td style="text-align: center">{{b.status}}</td>
+            <td style="text-align: center">{{b.balance}}</td>
             <td style="text-align: center">
               <div class="circular ui mini teal animated button" tabindex="0">
                 <div class="visible content">Edit</div>

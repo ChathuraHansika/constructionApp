@@ -4,6 +4,7 @@ import {LocalStorage, LocalStorageService} from "ngx-webstorage";
 import {BankDetailDto} from "../../dto/accounting/BankDetailDto";
 import {validate} from "codelyzer/walkerFactory/walkerFn";
 import {AlertService} from "../../core/services/alert.service";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'app-bank-accounts-manager',
@@ -20,7 +21,8 @@ export class BankAccountsManagerComponent implements OnInit {
   banks: any;
   sites: any;
   bankDetailDto = new BankDetailDto();
-
+  bankDetails: any[];
+  bankSearch: any;
 
   ngOnInit() {
     this.loadBanks();
@@ -40,9 +42,11 @@ export class BankAccountsManagerComponent implements OnInit {
       this.alertService.showToaster("Fill All Inputs", "ERROR")
     } else {
       this.accountingService.saveAccount(this.bankDetailDto).subscribe(data => {
-
+        this.alertService.showToaster("Success", "INFO");
+        this.accountingService.loadAccounts().subscribe(data => {
+          this.bankDetails = data;
+        });
       });
-      this.alertService.showToaster("Success", "INFO")
     }
   }
 
@@ -70,5 +74,24 @@ export class BankAccountsManagerComponent implements OnInit {
   getSiteID(value: any) {
     alert(value);
     this.bankDetailDto.siteId = value !== "0" ? value : undefined;
+  }
+
+  setData(b: any) {
+
+  }
+
+  getBankIdSearch(value: any) {
+    this.bankSearch = value !== "0" ? value : undefined;
+  }
+
+  bankSearchByID() {
+    if (this.bankSearch === undefined || this.bankSearch === "0") {
+      this.alertService.showToaster("Please Select Bank", "WARNING");
+    } else {
+      const data = {bankId: this.bankSearch}
+      this.accountingService.accountSearchByBankId(data).subscribe(data => {
+        this.bankDetails = data;
+      });
+    }
   }
 }
