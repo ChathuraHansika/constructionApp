@@ -188,7 +188,7 @@ export class EmployeeDetailsComponent implements OnInit {
     this.epf = employee.epf;
     this.etf = employee.etf;
     this.otrate = employee.otrate;
-    this.jobType = employee.jobType;
+    //this.jobType = employee.jobType;
     this.designation = employee.designation;
     this.perDayWorkHour = employee.perDayWorkHour;
     this.noPayDeduct = employee.noPayDeduct;

@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {AccoutingService} from "../../core/services/Accounting/accouting.service";
 import {LocalStorage, LocalStorageService} from "ngx-webstorage";
 import {BankDetailDto} from "../../dto/accounting/BankDetailDto";
 import {validate} from "codelyzer/walkerFactory/walkerFn";
 import {AlertService} from "../../core/services/alert.service";
 import {forEach} from "@angular/router/src/utils/collection";
+
+declare var $: any;
 
 @Component({
   selector: 'app-bank-accounts-manager',
@@ -23,8 +25,14 @@ export class BankAccountsManagerComponent implements OnInit {
   bankDetailDto = new BankDetailDto();
   bankDetails: any[];
   bankSearch: any;
+  branchText: any;
+  bankTxt: any;
 
   ngOnInit() {
+    $('.ui.selection.dropdown')
+      .dropdown({
+        allowAdditions: true
+      });
     this.loadBanks();
     this.sites = this.localStorage.retrieve('CONSTRUCTION_SITES');
     console.log(this.sites);
@@ -59,8 +67,10 @@ export class BankAccountsManagerComponent implements OnInit {
     this.bankDetailDto.accountNumber !== undefined &&
     this.bankDetailDto.siteId !== undefined;
 
+
   getBankId(value: any) {
     this.bankDetailDto.bankId = value !== "0" ? value : undefined;
+
   }
 
   getAccountType(value: any) {
@@ -77,6 +87,15 @@ export class BankAccountsManagerComponent implements OnInit {
   }
 
   setData(b: any) {
+    this.bankDetailDto.branch = b.branch;
+    this.bankDetailDto.accountNumber = b.accountNumber;
+    this.bankDetailDto.accountName = b.accountName;
+    this.bankDetailDto.balance = b.balance;
+    this.bankTxt = b.accountNumber;
+    $('#bankTxt').dropdown('set selected', b.bank);
+    $('#siteTxt').dropdown('set selected', b.site);
+    $('#AccountTypeTxt').dropdown('set selected', b.type);
+    $('#statusTxt').dropdown('set selected', b.status);
 
   }
 
@@ -91,6 +110,7 @@ export class BankAccountsManagerComponent implements OnInit {
       const data = {bankId: this.bankSearch}
       this.accountingService.accountSearchByBankId(data).subscribe(data => {
         this.bankDetails = data;
+        console.log(data);
       });
     }
   }

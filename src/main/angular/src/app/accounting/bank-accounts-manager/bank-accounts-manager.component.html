@@ -13,19 +13,46 @@
                   <label>Approval</label>
                 </div>
               </div>
+<!--              <div class="inline fields">-->
+<!--                <label style="width: 22%; text-align: right; font-size: 12px"> Bank Name *</label>-->
+<!--                <div class="twelve wide field">-->
+<!--                  <select style="height: 13%" class="ui tiny search dropdown" (change)="getBankId($event.target.value)">-->
+<!--                    <option value="0">Please Select Bank</option>-->
+<!--                    <option *ngFor="let bank of banks" value="{{bank.id}}">{{bank.name}}</option>-->
+<!--                  </select>-->
+<!--                </div>-->
+<!--                <div class="twelve wide field">-->
+<!--                  <div class="ui selection dropdown" style="width: 100%"  >-->
+<!--                    <input type="hidden"  >-->
+<!--                    <i class="dropdown icon"></i>-->
+<!--                    <div class="default text">Select Bank</div>-->
+<!--                    <div class="menu">-->
+<!--                      <div *ngFor="let bank of banks" class="item"-->
+<!--                           (click)="getBankId(bank)">{{bank.name}}-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
               <div class="inline fields">
-                <label style="width: 22%; text-align: right; font-size: 12px"> Bank Name *</label>
-                <div class="twelve wide field">
-                  <select style="height: 13%" class="ui tiny search dropdown" (change)="getBankId($event.target.value)">
-                    <option value="0">Please Select Bank</option>
-                    <option *ngFor="let bank of banks" value="{{bank.id}}">{{bank.name}}</option>
-                  </select>
+                <label style="width: 22%; text-align: right; font-size: 12px;">Bank * :</label>
+                <div class="twelve wide field" >
+                  <div class="ui selection dropdown"  style="width: 100%"  id="bankTxt"  >
+                    <input type="hidden" name="bankTxt"   >
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select Job Type</div>
+                    <div class="menu">
+                      <div *ngFor="let bank of banks" class="item"
+                           (click)="getBankId(bank.id)">{{bank.name}}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="inline fields">
                 <label style="width: 22%; text-align: right; font-size: 12px;"> Branch *</label>
                 <div class="twelve wide field">
-                  <input type="text" placeholder="Branch" [(ngModel)]="bankDetailDto.branch">
+                  <input type="text"   placeholder="Branch" [(ngModel)]="bankDetailDto.branch">
                 </div>
               </div>
               <div class="inline fields">
@@ -40,35 +67,86 @@
                   <input type="text" placeholder="A/C Name" [(ngModel)]="bankDetailDto.accountName">
                 </div>
               </div>
+<!--              <div class="inline fields">-->
+<!--                <label style="width: 22%; text-align: right; font-size: 12px;"> Site *</label>-->
+<!--                <div class="twelve wide field">-->
+<!--                  <select style="height: 13%" class="ui tiny search dropdown" (change)="getSiteID($event.target.value)">-->
+<!--                    <option value="0">Select Site</option>-->
+<!--                    <option *ngFor="let site of sites" value={{site.siteId}}>{{site.projectName}}</option>-->
+<!--                  </select>-->
+<!--                </div>-->
+<!--              </div>-->
               <div class="inline fields">
-                <label style="width: 22%; text-align: right; font-size: 12px;"> Site *</label>
-                <div class="twelve wide field">
-                  <select style="height: 13%" class="ui tiny search dropdown" (change)="getSiteID($event.target.value)">
-                    <option value="0">Select Site</option>
-                    <option *ngFor="let site of sites" value={{site.siteId}}>{{site.projectName}}</option>
-                  </select>
+                <label style="width: 22%; text-align: right; font-size: 12px;">Site * :</label>
+                <div class="twelve wide field" >
+                  <div class="ui selection dropdown"  style="width: 100%" id="siteTxt"    >
+                    <input type="hidden"  >
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select Site</div>
+                    <div class="menu">
+                      <div *ngFor="let site of sites" class="item"
+                           (click)="getSiteID(site.siteId)">{{site.projectName}}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
+<!--              <div class="inline fields">-->
+<!--                <label style="width: 22%; text-align: right; font-size: 12px;"> A/C Type *</label>-->
+<!--                <div class="twelve wide field">-->
+<!--                  <select style="height: 13%" class="ui tiny search dropdown"-->
+<!--                          (change)="getAccountType($event.target.value)">-->
+<!--                    <option value="0">Select A/C Type</option>-->
+<!--                    <option value="SAVING">SAVING</option>-->
+<!--                    <option value="CURRENT">CURRENT</option>-->
+<!--                  </select>-->
+<!--                </div>-->
+<!--              </div>-->
               <div class="inline fields">
-                <label style="width: 22%; text-align: right; font-size: 12px;"> A/C Type *</label>
-                <div class="twelve wide field">
-                  <select style="height: 13%" class="ui tiny search dropdown"
-                          (change)="getAccountType($event.target.value)">
-                    <option value="0">Select A/C Type</option>
-                    <option value="SAVING">SAVING</option>
-                    <option value="CURRENT">CURRENT</option>
-                  </select>
+                <label style="width: 22%; text-align: right; font-size: 12px;">Account Type* :</label>
+                <div class="twelve wide field" >
+                  <div class="ui selection dropdown"  style="width: 100%"  id="AccountTypeTxt"   >
+                    <input type="hidden"  >
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select Account Type</div>
+                    <div class="menu">
+                      <div  class="item"
+                           (click)="getAccountType('SAVING')">SAVING
+                      </div>
+                      <div  class="item"
+                            (click)="getAccountType('CURRENT')">CURRENT
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
+<!--              <div class="inline fields">-->
+<!--                <label style="width: 22%; text-align: right; font-size: 12px;">A/C Status *</label>-->
+<!--                <div class="twelve wide field">-->
+<!--                  <select style="height: 13%" class="ui tiny search dropdown"-->
+<!--                          (change)="getAccountStatus($event.target.value)">-->
+<!--                    <option value="0">Select A/C Status</option>-->
+<!--                    <option value="ACT">ACTIVE</option>-->
+<!--                    <option value="INA">INACTIVE</option>-->
+<!--                  </select>-->
+<!--                </div>-->
+<!--              </div>-->
               <div class="inline fields">
-                <label style="width: 22%; text-align: right; font-size: 12px;">A/C Status *</label>
-                <div class="twelve wide field">
-                  <select style="height: 13%" class="ui tiny search dropdown"
-                          (change)="getAccountStatus($event.target.value)">
-                    <option value="0">Select A/C Status</option>
-                    <option value="ACT">ACTIVE</option>
-                    <option value="INA">INACTIVE</option>
-                  </select>
+                <label style="width: 22%; text-align: right; font-size: 12px;">A/C Status * :</label>
+                <div class="twelve wide field" >
+                  <div class="ui selection dropdown"  style="width: 100%"  id="statusTxt"  >
+                    <input type="hidden"  >
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select Account Status</div>
+                    <div class="menu">
+                      <div  class="item"
+                            (click)="getAccountStatus('ACT')">ACTIVE
+                      </div>
+                      <div  class="item"
+                            (click)="getAccountStatus('INA')">INACTIVE
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="inline fields">
@@ -114,13 +192,13 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let b of bankDetails" (click)="setData(b)">
+          <tr *ngFor="let b of bankDetails" >
             <td style="text-align: center" class="" data-tooltip="Hover to view bank and site"
                 data-position="right center" data-inverted="" data-variation="huge basic">{{b.accountNumber}}</td>
             <td style="text-align: center">{{b.status}}</td>
             <td style="text-align: center">{{b.balance}}</td>
             <td style="text-align: center">
-              <div class="circular ui mini teal animated button" tabindex="0">
+              <div class="circular ui mini teal animated button" tabindex="0" (click)="setData(b)" >
                 <div class="visible content">Edit</div>
                 <div class="hidden content">
                   <i class="pencil alternate icon"></i>
