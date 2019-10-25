@@ -12,5 +12,6 @@ public interface BankDetailRepo extends JpaRepository<BankDetail, Integer> {
 
     List<BankDetail> findByBank_BankId(Integer bankId);
 
+    BankDetail findByAccountNumber(String accNumber);
 
 }

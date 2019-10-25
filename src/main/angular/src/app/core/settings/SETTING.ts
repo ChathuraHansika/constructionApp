@@ -134,6 +134,10 @@ export class SETTING {
     }, accountSearchByBankId: {
       url: SETTING.HTTP_PREFIX + '/api/accounting/accountSearchByBankId',
       type: 'GET'
+    },
+    findAccountExits:{
+      url: SETTING.HTTP_PREFIX + '/api/accounting/findAccountExits',
+      type: 'GET'
     }
 
 

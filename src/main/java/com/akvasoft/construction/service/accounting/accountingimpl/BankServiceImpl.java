@@ -14,11 +14,9 @@ import com.akvasoft.construction.repo.accounting.BankDetailRepo;
 import com.akvasoft.construction.repo.accounting.BankRepo;
 import com.akvasoft.construction.service.accounting.BankService;
 import com.akvasoft.construction.util.DomainConstant;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,11 +42,21 @@ public class BankServiceImpl implements BankService {
 
     @Override
     public BankDetail saveBankDetails(BankDetailDto dto) {
-        return bankDetailRepo.save(new BankDetail(dto, siteRepo.getOne(dto.getSiteId()), bankRepo.getOne(dto.getBankId()),
+        BankDetail exitsBankDetail = bankDetailRepo.findByAccountNumber(dto.getAccountNumber());
+        if (exitsBankDetail != null) {
+            exitsBankDetail.setBank(bankRepo.getOne(dto.getBankId()));
+            exitsBankDetail.setSite(siteRepo.getOne(dto.getSiteId()));
+            exitsBankDetail.setStatus(DomainConstant.Status.getStatus(dto.getStatus()));
+            exitsBankDetail.setType(DomainConstant.BankAccountType.getBankAccountType(dto.getType()));
+            exitsBankDetail.setBalance(dto.getBalance());
+            exitsBankDetail.setAccountName(dto.getAccountName());
+            exitsBankDetail.setBranch(dto.getBranch());
+            return bankDetailRepo.saveAndFlush(exitsBankDetail);
+        } else return bankDetailRepo.save(new BankDetail(dto, siteRepo.getOne(dto.getSiteId()),
+                bankRepo.getOne(dto.getBankId()),
                 DomainConstant.Status.getStatus(dto.getStatus()),
                 DomainConstant.BankAccountType.getBankAccountType(dto.getType()))
         );
-
     }
 
     @Override
@@ -61,6 +69,14 @@ public class BankServiceImpl implements BankService {
     public List<BankDetailDto> accountSearchByBankId(int bankId) {
         return bankDetailRepo.findByBank_BankId(bankId).stream().map(detail -> new BankDetail()
                 .getBankDetailDto(detail)).collect(Collectors.toList());
+    }
+
+    @Override
+    public BankDetailDto findAccountExits(String accNumber) {
+        if (bankDetailRepo.findByAccountNumber(accNumber) != null) {
+            return new BankDetail().getBankDetailDto(bankDetailRepo.findByAccountNumber(accNumber));
+        }
+        return null;
     }
 
 

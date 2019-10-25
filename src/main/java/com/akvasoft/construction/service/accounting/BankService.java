@@ -23,4 +23,6 @@ public interface BankService {
     List<BankDetailDto> loadAccounts();
 
     List<BankDetailDto> accountSearchByBankId(int bankId);
+
+    BankDetailDto findAccountExits(String accNumber);
 }

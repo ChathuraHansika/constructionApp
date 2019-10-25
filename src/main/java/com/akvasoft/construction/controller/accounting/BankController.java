@@ -41,7 +41,12 @@ public class BankController {
     }
 
     @GetMapping(value = "/accountSearchByBankId")
-    public Response accountSearchByBankId(@RequestParam("bankId") int bankId){
-        return new Response(bankService.accountSearchByBankId(bankId),true);
+    public Response accountSearchByBankId(@RequestParam("bankId") int bankId) {
+        return new Response(bankService.accountSearchByBankId(bankId), true);
+    }
+
+    @GetMapping(value = "/findAccountExits")
+    public Response findAccountExits(@RequestParam("accNumber") String accNumber) {
+        return new Response(bankService.findAccountExits(accNumber), true);
     }
 }

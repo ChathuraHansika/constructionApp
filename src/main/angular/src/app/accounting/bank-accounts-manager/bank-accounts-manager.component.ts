@@ -35,7 +35,12 @@ export class BankAccountsManagerComponent implements OnInit {
       });
     this.loadBanks();
     this.sites = this.localStorage.retrieve('CONSTRUCTION_SITES');
-    console.log(this.sites);
+  }
+
+  detailUpdateModel() {
+    $('.tiny.modal')
+      .modal('show')
+    ;
   }
 
   loadBanks() {
@@ -49,12 +54,21 @@ export class BankAccountsManagerComponent implements OnInit {
     if (!this.validation()) {
       this.alertService.showToaster("Fill All Inputs", "ERROR")
     } else {
-      this.accountingService.saveAccount(this.bankDetailDto).subscribe(data => {
-        this.alertService.showToaster("Success", "INFO");
-        this.accountingService.loadAccounts().subscribe(data => {
-          this.bankDetails = data;
-        });
+      let accountNumber = this.bankDetailDto.accountNumber;
+      const data = {accNumber: accountNumber};
+      this.accountingService.findAccountExits(data).subscribe(data => {
+        if (data != null) {
+          this.detailUpdateModel();
+        } else {
+          this.accountingService.saveAccount(this.bankDetailDto).subscribe(data => {
+            this.alertService.showToaster("Success", "INFO");
+            this.accountingService.loadAccounts().subscribe(data => {
+              this.bankDetails = data;
+            });
+          });
+        }
       });
+
     }
   }
 
@@ -82,7 +96,6 @@ export class BankAccountsManagerComponent implements OnInit {
   }
 
   getSiteID(value: any) {
-    alert(value);
     this.bankDetailDto.siteId = value !== "0" ? value : undefined;
   }
 
@@ -92,6 +105,10 @@ export class BankAccountsManagerComponent implements OnInit {
     this.bankDetailDto.accountName = b.accountName;
     this.bankDetailDto.balance = b.balance;
     this.bankTxt = b.accountNumber;
+    this.bankDetailDto.bankId = b.bankId;
+    this.bankDetailDto.siteId = b.siteId;
+    this.bankDetailDto.type = b.type;
+    this.bankDetailDto.status = b.status;
     $('#bankTxt').dropdown('set selected', b.bank);
     $('#siteTxt').dropdown('set selected', b.site);
     $('#AccountTypeTxt').dropdown('set selected', b.type);
@@ -113,5 +130,14 @@ export class BankAccountsManagerComponent implements OnInit {
         console.log(data);
       });
     }
+  }
+
+  confirmUpdate() {
+    this.accountingService.saveAccount(this.bankDetailDto).subscribe(data => {
+      this.alertService.showToaster("Detail Updated", "INFO");
+      this.accountingService.loadAccounts().subscribe(data => {
+        this.bankDetails = data;
+      });
+    });
   }
 }

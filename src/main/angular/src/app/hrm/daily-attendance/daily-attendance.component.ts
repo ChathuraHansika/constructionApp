@@ -240,7 +240,8 @@ export class DailyAttendanceComponent implements OnInit {
     }
   }
 
-  saveAttendanceIn(data) {
+  saveAttendanceIn(data, value) {
+    // (<HTMLInputElement>document.getElementById(value.toString())).disabled = true;
     if (this.validate('in') === 0) {
     } else if (this.checkTimeIn === '' && this.attendance === 'Present') {
       this.alertService.showToaster('Please Insert Time In Value', 'WARNING');

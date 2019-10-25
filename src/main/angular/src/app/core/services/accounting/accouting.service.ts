@@ -31,4 +31,8 @@ export class AccoutingService {
   accountSearchByBankId(data: any) {
 return this.dataService.request(SETTING.ENDPOINTS.accountSearchByBankId,data);
   }
+
+  findAccountExits(data: any) {
+    return this.dataService.request(SETTING.ENDPOINTS.findAccountExits,data);
+  }
 }
